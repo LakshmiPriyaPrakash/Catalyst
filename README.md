@@ -8,7 +8,8 @@ Catalyst, a Medium clone, is a website dedicated to stories on sustainability, m
 ### Sign up modal:
 ### User Dashboard:
 ### Features
-* Sign up for new user and log in with credentials for existing user
+* Sign up modal for new users 
+* Log in with credentials for existing users
 * Full access to site functionality for demo user
 * Logged in users can read, write, edit, and delete stories
 * Logged in users can read, write, edit, and delete comments for stories
