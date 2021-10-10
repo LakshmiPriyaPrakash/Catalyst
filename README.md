@@ -4,9 +4,16 @@ Catalyst, a Medium clone, is a website dedicated to stories on sustainability, m
 
 **Live site link:**  
 
+
 ### Landing Page:
+
+
 ### Sign up modal:
+
+
 ### User Dashboard:
+
+
 ### Features
 * Sign up modal for new users 
 * Log in with credentials for existing users
@@ -16,13 +23,25 @@ Catalyst, a Medium clone, is a website dedicated to stories on sustainability, m
 * Logged in users can like or remove likes for stories
 * Logged in users can follow or unfollow authors
 
+### Code highlights
+
+
 ### Database Schema
 
 ![Catalyst Database schema](https://user-images.githubusercontent.com/69326826/136686373-73a22f35-b547-4391-8c31-a6a487868d6d.png)
 
 ### Front End Routes
+
+
 ### Backend Routes
+
+
 ### React Components
+
+
 ### Redux
-### Code highlights
+
+
 ### Future Plans
+
+
