@@ -8,6 +8,7 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,7 +20,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ name, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -33,6 +34,15 @@ function SignupFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <label>
+        Name
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </label>
       <label>
         Email
         <input

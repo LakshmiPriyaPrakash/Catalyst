@@ -4,6 +4,18 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50],
+        isNotEmail(value) {
+          if (Validator.isEmail(value)) {
+            throw new Error('Cannot be an email.');
+          }
+        },
+      },
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -82,9 +94,10 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ name, username, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
+      name,
       username,
       email,
       hashedPassword,
