@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import './SignupForm.css';
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -25,11 +26,12 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="signup-form" onSubmit={handleSubmit}>
+      <h2>Join Catalyst.</h2>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <label className="signup-form-field">
         Name
         <input
           type="text"
@@ -38,7 +40,7 @@ function SignupForm() {
           required
         />
       </label>
-      <label>
+      <label className="signup-form-field">
         Email
         <input
           type="text"
@@ -47,7 +49,7 @@ function SignupForm() {
           required
         />
       </label>
-      <label>
+      <label className="signup-form-field">
         Username
         <input
           type="text"
@@ -56,7 +58,7 @@ function SignupForm() {
           required
         />
       </label>
-      <label>
+      <label className="signup-form-field">
         Password
         <input
           type="password"
@@ -65,7 +67,7 @@ function SignupForm() {
           required
         />
       </label>
-      <label>
+      <label className="signup-form-field">
         Confirm Password
         <input
           type="password"
@@ -74,7 +76,8 @@ function SignupForm() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button id="signup-button" type="submit">Sign Up</button>
+      <span id="signup-modal-close">X</span>
     </form>
   );
 }
