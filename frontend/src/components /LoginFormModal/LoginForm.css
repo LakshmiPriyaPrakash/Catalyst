@@ -13,3 +13,11 @@
 #login-button {
     margin: 20px;
 }
+
+#login-errors {
+    color: rgb(255, 73, 73);
+}
+
+ul {
+    list-style-position: inside;
+ }
