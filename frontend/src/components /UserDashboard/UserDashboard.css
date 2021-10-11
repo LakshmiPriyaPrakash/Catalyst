@@ -1,11 +1,5 @@
-#hp-misc-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 400px;
-}
 
-#hp-feed-container {
+#ud-feed-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -13,17 +7,17 @@
     width: 100%;
 }
 
-#hp-left-div {
+#ud-left-div {
     width: 20%;
     border: 2px solid black;
 }
 
-#hp-right-div {
+#ud-right-div {
     width: 20%;
     border: 2px solid black;
 }
 
-#hp-center-div {
+#ud-center-div {
     width: 60%;
     border: 2px solid black;
 }
