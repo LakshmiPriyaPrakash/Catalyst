@@ -77,7 +77,6 @@ function SignupForm() {
         />
       </label>
       <button id="signup-button" type="submit">Sign Up</button>
-      <span id="signup-modal-close">X</span>
     </form>
   );
 }

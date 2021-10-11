@@ -26,3 +26,12 @@
     display: flex;
     justify-content: center;
   }
+
+  #modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: sans-serif;
+    font-size: x-small;
+    cursor: pointer;
+}
