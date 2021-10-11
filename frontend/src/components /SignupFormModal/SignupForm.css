@@ -13,3 +13,7 @@
 #signup-button {
     margin: 20px;
 }
+
+#signup-errors {
+    color: rgb(255, 73, 73);
+}
