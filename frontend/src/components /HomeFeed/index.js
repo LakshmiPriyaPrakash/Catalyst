@@ -16,7 +16,7 @@ function HomeFeed() {
                         let d = new Date(story.createdAt);
                         let dateWritten = d.toString().slice(4, 10)
                         return(
-                            <li key={story.id}>
+                            <li key={story.id} id="feed-list">
                                 <p>{story.User.name}</p>
                                 <img id="feed-img" src={story.imageUrl} alt="story"/>
                                 <h3>{story.title}</h3>
