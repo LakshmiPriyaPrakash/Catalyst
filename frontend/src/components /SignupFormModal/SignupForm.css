@@ -13,12 +13,3 @@
 #signup-button {
     margin: 20px;
 }
-
-#signup-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-family: sans-serif;
-    font-size: x-small;
-    cursor: pointer;
-}
