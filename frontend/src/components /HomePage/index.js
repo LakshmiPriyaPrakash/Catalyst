@@ -1,3 +1,4 @@
+import HomeFeed from '../HomeFeed';
 import './HomePage.css'
 
 function Homepage() {
@@ -12,7 +13,7 @@ function Homepage() {
                     left div
                 </div>
                 <div id="hp-center-div">
-                    center div containing stories feed
+                    <HomeFeed />
                 </div>
                 <div id="hp-right-div">
                     right div

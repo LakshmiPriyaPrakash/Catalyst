@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components /Navigation";
 import Homepage from "./components /HomePage";
 import Userdashboard from "./components /UserDashboard";
+import { getStories } from "./store/stories";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -24,7 +25,9 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(getStories());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+
   }, [dispatch]);
 
   return (

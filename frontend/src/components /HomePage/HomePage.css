@@ -14,16 +14,21 @@
 }
 
 #hp-left-div {
+    height: 100vh;
     width: 20%;
-    border: 2px solid black;
+
 }
 
 #hp-right-div {
     width: 20%;
-    border: 2px solid black;
+
 }
 
 #hp-center-div {
     width: 60%;
-    border: 2px solid black;
+
+}
+
+ul {
+    list-style-type: none
 }
