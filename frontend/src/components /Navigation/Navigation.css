@@ -1,0 +1,22 @@
+#nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(187, 245, 187);
+    height: 80px;
+    width: 100%;
+}
+
+#home-link {
+    text-decoration: none;
+    color: black;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+
+#nav-buttons {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}

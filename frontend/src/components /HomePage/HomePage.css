@@ -1,0 +1,29 @@
+#hp-misc-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 400px;
+}
+
+#hp-feed-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 100%;
+}
+
+#hp-left-div {
+    width: 20%;
+    border: 2px solid black;
+}
+
+#hp-right-div {
+    width: 20%;
+    border: 2px solid black;
+}
+
+#hp-center-div {
+    width: 60%;
+    border: 2px solid black;
+}
