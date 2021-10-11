@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#profile-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-button {
+    cursor: pointer;
+}
+
+#profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: blanchedalmond;
+    top: 70px;
+}
+
+.prof-list-item {
+    font-family: monospace;
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.prof-list-item:hover {
+    background-color: whitesmoke;
+}
