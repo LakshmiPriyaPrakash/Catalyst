@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import './LoginForm.css';
 
 
 function LoginForm() {
@@ -21,13 +22,14 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="login-form" onSubmit={handleSubmit}>
+      <h2>Welcome back.</h2>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
+      <label className="login-form-field">
         Username or Email
         <input
           type="text"
@@ -36,7 +38,7 @@ function LoginForm() {
           required
         />
       </label>
-      <label>
+      <label className="login-form-field">
         Password
         <input
           type="password"
@@ -45,7 +47,7 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button id="login-button" type="submit">Log In</button>
     </form>
   );
 }
