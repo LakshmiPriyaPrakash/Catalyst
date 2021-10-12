@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createStory } from "../../store/stories";
 import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import './WriteStory.css'
 
 
@@ -35,6 +36,7 @@ function WriteStory() {
         }
       };
 
+    if(sessionUser) {
         return (
             <>
                 <form id="story-form" onSubmit={handleSubmit}>
@@ -84,6 +86,11 @@ function WriteStory() {
                 </form>
             </>
         );
+    } else {
+        return (
+            <Redirect to='/' />
+        );
+    }
 }
 
 
