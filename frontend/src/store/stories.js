@@ -18,6 +18,20 @@ export const getStories = () => async (dispatch) => {
     }
 };
 
+export const createStory = (newStory) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stories`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newStory),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getStories());
+    return data;
+  }
+};
+
 
 const initialState = {};
 

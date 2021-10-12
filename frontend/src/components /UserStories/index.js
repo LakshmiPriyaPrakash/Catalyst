@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import './UserStories.css';
 
 
@@ -37,7 +38,7 @@ function UserStories() {
         )
     } else {
         return (
-        <h2>Your stories</h2>
+            <Redirect to='/' />
         );
     }
 

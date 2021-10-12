@@ -1,0 +1,14 @@
+#story-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ws-form-field {
+    margin-top: 20px;
+}
+
+#ws-button {
+    margin: 20px;
+}
