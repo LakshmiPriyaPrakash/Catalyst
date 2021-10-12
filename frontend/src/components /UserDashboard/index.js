@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router';
 import './UserDashboard.css'
 
 function Userdashboard() {
+    const sessionUser = useSelector(state => state.session.user);
+
+    if (sessionUser) {
         return (
             <div id="ud-feed-container">
                 <div id="ud-left-div">
@@ -14,6 +19,11 @@ function Userdashboard() {
                 </div>
             </div>
           );
+    } else {
+        return (
+            <Redirect to='/' />
+        );
+    }
 }
 
 export default Userdashboard;
