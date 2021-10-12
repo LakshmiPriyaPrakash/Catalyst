@@ -1,0 +1,14 @@
+#story-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.us-form-field {
+    margin-top: 20px;
+}
+
+#us-button {
+    margin: 20px;
+}

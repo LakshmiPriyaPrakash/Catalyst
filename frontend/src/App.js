@@ -7,8 +7,10 @@ import Homepage from "./components /HomePage";
 import Userdashboard from "./components /UserDashboard";
 import StoryDetail from "./components /StoryDetails";
 import UserStories from "./components /UserStories";
-import { getStories } from "./store/stories";
 import WriteStory from "./components /WriteStory";
+import EditStory from "./components /UpdateStory";
+import { getStories } from "./store/stories";
+
 
 function App() {
 
@@ -39,6 +41,9 @@ function App() {
         </Route>
         <Route path="/story/new">
           <WriteStory />
+        </Route>
+        <Route path="/edit/story/:editStoryId">
+          <EditStory />
         </Route>
         <Route path="/">
             <h2>Page Not Found</h2>

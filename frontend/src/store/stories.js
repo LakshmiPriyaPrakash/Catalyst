@@ -32,6 +32,19 @@ export const createStory = (newStory) => async (dispatch) => {
   }
 };
 
+export const updateStory = (updateStory) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stories/${updateStory.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updateStory),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getStories());
+    return data;
+  }
+};
 
 const initialState = {};
 

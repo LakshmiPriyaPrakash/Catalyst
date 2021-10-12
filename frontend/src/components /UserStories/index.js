@@ -30,6 +30,9 @@ function UserStories() {
                                     <h5>{story.subtitle}</h5>
                                 </NavLink>
                                 <p>{dateWritten}</p>
+                                <NavLink to={`/edit/story/${story.id}`}>
+                                    <button type="submit">Edit</button>
+                                </NavLink>
                             </li>
                         )
                     })}
