@@ -18,10 +18,12 @@ module.exports = {
         allowNull: false
       },
       subtitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       imageUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       body: {
         type: Sequelize.TEXT,
