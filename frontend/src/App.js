@@ -8,6 +8,7 @@ import Userdashboard from "./components /UserDashboard";
 import StoryDetail from "./components /StoryDetails";
 import UserStories from "./components /UserStories";
 import { getStories } from "./store/stories";
+import WriteStory from "./components /WriteStory";
 
 function App() {
 
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route path="/user/stories">
           <UserStories />
+        </Route>
+        <Route path="/story/new">
+          <WriteStory />
         </Route>
         <Route path="/">
             <h2>Page Not Found</h2>
