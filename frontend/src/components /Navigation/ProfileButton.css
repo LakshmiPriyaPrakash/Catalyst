@@ -23,7 +23,8 @@
 
 .prof-list-item {
     font-family: monospace;
-    list-style: none;
+    color: black;
+    list-style-type: none;
     padding: 10px;
     cursor: pointer;
     transition: background-color 200ms ease-in-out;

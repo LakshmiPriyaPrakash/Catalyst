@@ -6,6 +6,7 @@ import Navigation from "./components /Navigation";
 import Homepage from "./components /HomePage";
 import Userdashboard from "./components /UserDashboard";
 import StoryDetail from "./components /StoryDetails";
+import UserStories from "./components /UserStories";
 import { getStories } from "./store/stories";
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route path="/stories/:storyId">
           <StoryDetail />
+        </Route>
+        <Route path="/user/stories">
+          <UserStories />
         </Route>
         <Route path="/">
             <h2>Page Not Found</h2>

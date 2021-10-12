@@ -1,21 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import './UserFeed.css';
+import './UserStories.css';
 
 
-function UserFeed() {
+function UserStories() {
     const sessionUser = useSelector(state => state.session.user);
     const allStories = useSelector(state => state.stories);
     const storiesArr = Object.values(allStories);
-    const recStories = storiesArr.filter(story => story.authorId !== sessionUser.id)
 
-    if(recStories.length) {
+    let userStories;
+    if(sessionUser && storiesArr.length) {
+        userStories = storiesArr.filter(story => story.authorId === sessionUser.id);
+
         return (
             <>
-                <h2>Recommended stories</h2>
+                <h2>Your stories</h2>
                  <ul>
-                    {recStories.map(story => {
+                    {userStories.map(story => {
                         let d = new Date(story.createdAt);
                         let dateWritten = d.toString().slice(4, 10)
                         return(
@@ -35,7 +37,7 @@ function UserFeed() {
         )
     } else {
         return (
-        <h2>Recommended stories</h2>
+        <h2>Your stories</h2>
         );
     }
 
@@ -43,4 +45,4 @@ function UserFeed() {
 
 
 
-export default UserFeed;
+export default UserStories;
