@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import './HomeFeed.css';
 
 
@@ -18,16 +19,17 @@ function HomeFeed() {
                         return(
                             <li key={story.id} id="feed-list">
                                 <p>{story.User.name}</p>
-                                <img id="feed-img" src={story.imageUrl} alt="story"/>
-                                <h3>{story.title}</h3>
-                                <h5>{story.subtitle}</h5>
+                                <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                    <img id="feed-img" src={story.imageUrl} alt="story"/>
+                                    <h3>{story.title}</h3>
+                                    <h5>{story.subtitle}</h5>
+                                </NavLink>
                                 <p>{dateWritten}</p>
 
                             </li>
                         )
                     })}
                 </ul>
-
             </>
         )
     } else {

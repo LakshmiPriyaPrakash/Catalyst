@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router";
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import * as sessionActions from "./store/session";
 import Navigation from "./components /Navigation";
 import Homepage from "./components /HomePage";
 import Userdashboard from "./components /UserDashboard";
+import StoryDetail from "./components /StoryDetails";
 import { getStories } from "./store/stories";
 
 function App() {
@@ -13,11 +15,15 @@ function App() {
   let userDisplay;
   if(sessionUser) {
     userDisplay = (
-      <Userdashboard />
+      <Route path="/user/dashboard">
+        <Userdashboard />
+      </Route>
     );
   } else {
     userDisplay = (
-      <Homepage />
+      <Route path="/" exact>
+          <Homepage />
+      </Route>
     );
   }
 
@@ -33,7 +39,15 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Switch>
       {userDisplay}
+        <Route path="/stories/:storyId">
+          <StoryDetail />
+        </Route>
+        <Route path="/">
+            <h2>Page Not Found</h2>
+        </Route>
+      </Switch>
     </>
   );
 }
