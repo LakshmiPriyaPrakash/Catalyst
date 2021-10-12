@@ -12,6 +12,15 @@ router.get('/', asyncHandler(async function(req, res) {
     return res.json(stories);
 }));
 
+//inserts a story into the Stories table
+router.post('/', asyncHandler(async function(req, res) {
+      let story = await Story.create(req.body);
+      if(story) {
+        return res.json(story);
+      }
+    })
+  );
+
 
 
 

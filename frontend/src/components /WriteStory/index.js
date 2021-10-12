@@ -1,21 +1,43 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { createStory } from "../../store/stories";
+import { useHistory } from 'react-router-dom';
 import './WriteStory.css'
+
 
 function WriteStory() {
     const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [title, setTitle] = useState("");
     const [subtitle, setSubtitle] = useState("");
-    const [imageurl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [body, setBody] = useState("");
 
-    if(sessionUser) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const authorId = sessionUser.id;
+
+        const newStory = {
+            authorId,
+            title,
+            subtitle,
+            imageUrl,
+            body
+        };
+
+        let createdStory = await dispatch(createStory(newStory));
+
+        if (createdStory) {
+            history.push(`/stories/${createdStory.id}`);
+        }
+      };
+
         return (
             <>
-                <form id="story-form">
+                <form id="story-form" onSubmit={handleSubmit}>
                 <h2>Write a Story</h2>
                 <label className="ws-form-field">
                     Title
@@ -41,7 +63,7 @@ function WriteStory() {
                     Image URL
                     <input
                     type="text"
-                    value={imageurl}
+                    value={imageUrl}
                     placeholder="Add an image..."
                     onChange={(e) => setImageUrl(e.target.value)}
                     required
@@ -50,6 +72,8 @@ function WriteStory() {
                 <label className="ws-form-field">
                     Content
                     <textarea
+                    rows="15"
+                    cols="70"
                     value={body}
                     placeholder="write your story..."
                     onChange={(e) => setBody(e.target.value)}
@@ -60,9 +84,6 @@ function WriteStory() {
                 </form>
             </>
         );
-    } else {
-        <Redirect to='/' />
-    }
 }
 
 
