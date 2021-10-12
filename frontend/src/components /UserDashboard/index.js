@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import UserFeed from '../UserFeed';
 import './UserDashboard.css'
 
 function Userdashboard() {
@@ -12,7 +13,7 @@ function Userdashboard() {
                     left div
                 </div>
                 <div id="ud-center-div">
-                    center div containing stories feed
+                    <UserFeed />
                 </div>
                 <div id="ud-right-div">
                     right div
