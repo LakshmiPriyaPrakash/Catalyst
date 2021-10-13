@@ -2,7 +2,7 @@ Catalyst, a Medium clone, is a website dedicated to stories on sustainability, m
 
 **Documentation:** https://github.com/LakshmiPriyaPrakash/Catalyst/wiki  
 
-**Live site link:**  
+**Live site link:** https://the-catalyst.herokuapp.com/
 
 
 ### Landing Page:
