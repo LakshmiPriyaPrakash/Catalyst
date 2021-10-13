@@ -29,7 +29,9 @@ router.post('/', asyncHandler(async function(req, res) {
 //edits a story
 router.put('/:id', asyncHandler(async function(req, res) {
   await Story.update(req.body, { where: { id: req.body.id } });
-  const updatedStory = await Story.findByPk(req.body.id);
+  const updatedStory = await Story.findByPk(req.body.id, {
+    include: User
+  });
 
   if(updatedStory) {
     return res.json(updatedStory);
@@ -40,10 +42,10 @@ router.put('/:id', asyncHandler(async function(req, res) {
 //deletes a story
 router.delete('/delete/:id', asyncHandler(async function(req, res) {
   const storyId = req.params.id;
-  await Story.destroy({ where: { id: storyId } })
-  .then(() => {
-    return res.json({message: 'Success'});
-   })
+  const deletedStory = await Story.destroy({ where: { id: storyId } })
+  if(deletedStory) {
+    return res.json(storyId);
+  }
 })
 );
 

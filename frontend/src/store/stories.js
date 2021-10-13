@@ -2,6 +2,8 @@ import { csrfFetch } from './csrf';
 
 const LOAD_STORY = "stories/LOAD";
 const ADD_STORY = "stories/ADD_STORY";
+const UPDATE_STORY = "stories/UPDATE_STORY";
+const DELETE_STORY = "stories/DELETE_STORY";
 
 
 const loadStory = (stories) => ({
@@ -14,6 +16,15 @@ const addOneStory = (newStory) => ({
   newStory,
 });
 
+const updateOneStory = (updatedStory) => ({
+  type: UPDATE_STORY,
+  updatedStory,
+});
+
+const deleteOneStory = (deletedStoryId) => ({
+  type: DELETE_STORY,
+  deletedStoryId,
+});
 
 
 export const getStories = () => async (dispatch) => {
@@ -47,9 +58,9 @@ export const updateStory = (updateStory) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(getStories());
-    return data;
+    const updatedStory = await response.json();
+    dispatch(updateOneStory(updatedStory));
+    return updatedStory;
   }
 };
 
@@ -58,13 +69,9 @@ export const deleteStory = (storyId) => async (dispatch) => {
     method: "DELETE"
   });
 
-  await response.json();
-
-  if (response.message === "Success") {
-    // const data = await response.json();
-
-    dispatch(getStories());
-    // return data;
+  if (response.ok) {
+    const deletedStoryId = await response.json();
+    dispatch(deleteOneStory(deletedStoryId));
   }
 };
 
@@ -84,6 +91,16 @@ const storiesReducer = (state = initialState, action) => {
         const newState = {...state}
         newState[action.newStory.id] = {...action.newStory}
         return newState;
+    }
+    case UPDATE_STORY:{
+      const newState = {...state}
+      newState[action.updatedStory.id] = {...action.updatedStory}
+      return newState;
+    }
+    case DELETE_STORY:{
+      const newState = {...state}
+      delete newState[action.deletedStoryId]
+      return newState;
     }
     default:
       return state;
