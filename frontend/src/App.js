@@ -20,12 +20,12 @@ function App() {
   useEffect(() => {
     dispatch(getStories());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-
   }, [dispatch]);
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
       <Switch>
         <Route path="/" exact>
             <Homepage />
@@ -49,6 +49,7 @@ function App() {
             <h2>Page Not Found</h2>
         </Route>
       </Switch>
+      )}
     </>
   );
 }
