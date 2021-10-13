@@ -9,6 +9,10 @@
     margin-top: 20px;
 }
 
+#us-errors {
+    color: rgb(255, 73, 73);
+}
+
 #us-button {
     margin: 20px;
 }
