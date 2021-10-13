@@ -30,11 +30,11 @@ function App() {
         <Route path="/" exact>
             <Homepage />
         </Route>
-        <Route path="/user/dashboard">
-          <Userdashboard />
-        </Route>
         <Route path="/stories/:storyId">
           <StoryDetail />
+        </Route>
+        <Route path="/user/dashboard">
+          <Userdashboard />
         </Route>
         <Route path="/user/stories">
           <UserStories />

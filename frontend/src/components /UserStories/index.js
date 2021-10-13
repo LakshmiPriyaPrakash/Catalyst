@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { deleteStory } from '../../store/stories';
+import { Redirect } from 'react-router';
 import './UserStories.css';
 
 
@@ -13,7 +14,7 @@ function UserStories() {
 
     let userStories;
 
-    if(sessionUser && storiesArr.length) {
+    if(sessionUser) {
         userStories = storiesArr.filter(story => story.authorId === sessionUser.id);
 
         return (
@@ -47,7 +48,7 @@ function UserStories() {
         )
     } else {
         return (
-            <h2>Your stories</h2>
+            <Redirect to="/" />
         );
     }
 
