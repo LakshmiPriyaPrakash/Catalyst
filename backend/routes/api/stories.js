@@ -22,7 +22,8 @@ const validateStory = [
     .withMessage('Please provide content for story.'),
   check('imageUrl')
     .notEmpty()
-    .isURL({ require_protocol: false, require_host: false }),
+    .isURL({ require_protocol: false, require_host: false })
+    .withMessage('Please provide valid image URL.'),
   handleValidationErrors,
 ];
 

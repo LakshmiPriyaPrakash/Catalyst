@@ -17,6 +17,7 @@ function EditStory() {
     const [subtitle, setSubtitle] = useState(story.subtitle);
     const [imageUrl, setImageUrl] = useState(story.imageUrl);
     const [body, setBody] = useState(story.body);
+    const [errors, setErrors] = useState([]);
 
     if(sessionUser && story) {
 
@@ -34,17 +35,22 @@ function EditStory() {
                 body
             };
 
-            let updatedStory = await dispatch(updateStory(editedStory));
+            return dispatch(updateStory(editedStory))
+                .then((updatedStory)=> history.push(`/stories/${updatedStory.id}`))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
 
-            if (updatedStory) {
-                history.push(`/stories/${updatedStory.id}`);
-            }
         };
 
             return (
                 <>
                     <form id="story-form" onSubmit={handleSubmit} >
                     <h2>Edit your Story</h2>
+                    <ul id="us-errors">
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
                     <label className="us-form-field">
                         Title
                         <input
