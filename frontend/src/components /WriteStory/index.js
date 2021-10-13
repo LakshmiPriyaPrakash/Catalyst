@@ -14,6 +14,7 @@ function WriteStory() {
     const [subtitle, setSubtitle] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [body, setBody] = useState("");
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,17 +29,22 @@ function WriteStory() {
             body
         };
 
-        let createdStory = await dispatch(createStory(newStory));
+        return dispatch(createStory(newStory))
+                .then((createdStory)=> history.push(`/stories/${createdStory.id}`))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
 
-        if (createdStory) {
-            history.push(`/stories/${createdStory.id}`);
-        }
       };
 
         return (
             <>
                 <form id="story-form" onSubmit={handleSubmit}>
                 <h2>Write a Story</h2>
+                <ul id="ws-errors">
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
                 <label className="ws-form-field">
                     Title
                     <input

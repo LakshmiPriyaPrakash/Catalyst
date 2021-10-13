@@ -1,8 +1,30 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
+const { requireAuth } = require('../../utils/auth');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 const { Story, User } = require('../../db/models');
 
 const router = express.Router();
+
+const validateStory = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 1 })
+    .withMessage('Please provide a title.'),
+  check('subtitle')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 1 })
+    .withMessage('Please provide a subtitle.'),
+  check('body')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 1 })
+    .withMessage('Please provide content for story.'),
+  check('imageUrl')
+    .notEmpty()
+    .isURL({ require_protocol: false, require_host: false }),
+  handleValidationErrors,
+];
 
 //gets all stories from the Stories table
 router.get('/', asyncHandler(async function(req, res) {
@@ -14,7 +36,7 @@ router.get('/', asyncHandler(async function(req, res) {
 
 
 //inserts a story into the Stories table
-router.post('/', asyncHandler(async function(req, res) {
+router.post('/', requireAuth, validateStory, asyncHandler(async function(req, res) {
       const newStory = await Story.create(req.body);
       const story = await Story.findByPk(newStory.id, {
         include: User
@@ -27,7 +49,7 @@ router.post('/', asyncHandler(async function(req, res) {
 
 
 //edits a story
-router.put('/:id', asyncHandler(async function(req, res) {
+router.put('/:id', requireAuth, validateStory, asyncHandler(async function(req, res) {
   await Story.update(req.body, { where: { id: req.body.id } });
   const updatedStory = await Story.findByPk(req.body.id, {
     include: User
@@ -40,7 +62,7 @@ router.put('/:id', asyncHandler(async function(req, res) {
 );
 
 //deletes a story
-router.delete('/delete/:id', asyncHandler(async function(req, res) {
+router.delete('/delete/:id', requireAuth, asyncHandler(async function(req, res) {
   const storyId = req.params.id;
   const deletedStory = await Story.destroy({ where: { id: storyId } })
   if(deletedStory) {
