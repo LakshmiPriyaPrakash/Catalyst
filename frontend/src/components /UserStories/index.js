@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router';
 import './UserStories.css';
 
 
@@ -30,6 +29,9 @@ function UserStories() {
                                     <h5>{story.subtitle}</h5>
                                 </NavLink>
                                 <p>{dateWritten}</p>
+                                <NavLink to={`/edit/story/${story.id}`}>
+                                    <button type="submit">Edit</button>
+                                </NavLink>
                             </li>
                         )
                     })}
@@ -38,7 +40,7 @@ function UserStories() {
         )
     } else {
         return (
-            <Redirect to='/' />
+            <h2>Your stories</h2>
         );
     }
 
