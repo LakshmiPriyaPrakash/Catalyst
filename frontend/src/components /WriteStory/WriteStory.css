@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+#ws-errors {
+    color: rgb(255, 73, 73);
+}
+
 .ws-form-field {
     margin-top: 20px;
 }
