@@ -3,3 +3,21 @@
     height: 500px;
     width: 700px;
 }
+
+#story-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin-left: 20px;
+}
+
+.story-elements {
+    padding: 10px;
+}
+
+#comments-btn {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

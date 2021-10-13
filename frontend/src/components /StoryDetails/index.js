@@ -11,12 +11,15 @@ function StoryDetail() {
 
         return (
             <>
-                <p>{story.User.name}</p>
-                <p>{dateWritten}</p>
-                <h2>{story.title}</h2>
-                <h5>{story.subtitle}</h5>
-                <img id="sd-img"src={story.imageUrl} alt="story"/>
-                <p>{story.body}</p>
+                <div id="story-details">
+                    <p className="story-elements">{story.User.name}</p>
+                    <p className="story-elements">{dateWritten}</p>
+                    <h2 className="story-elements">{story.title}</h2>
+                    <h5 className="story-elements">{story.subtitle}</h5>
+                    <img id="sd-img"src={story.imageUrl} alt="story"/>
+                    <p className="story-elements">{story.body}</p>
+                    <button id="comments-btn" type="submit">Comments</button>
+                </div>
             </>
         )
     } else {
