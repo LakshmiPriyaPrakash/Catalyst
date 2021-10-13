@@ -10,8 +10,6 @@ function EditStory() {
     const sessionUser = useSelector(state => state.session.user);
     const { editStoryId } = useParams();
     const story = useSelector(state => state.stories[editStoryId]);
-    console.log(sessionUser)
-    console.log(story)
     const dispatch = useDispatch();
     const history = useHistory();
 

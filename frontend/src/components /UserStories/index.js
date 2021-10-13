@@ -1,15 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { deleteStory } from '../../store/stories';
 import './UserStories.css';
 
 
 function UserStories() {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const allStories = useSelector(state => state.stories);
     const storiesArr = Object.values(allStories);
 
     let userStories;
+
     if(sessionUser && storiesArr.length) {
         userStories = storiesArr.filter(story => story.authorId === sessionUser.id);
 
@@ -30,8 +33,12 @@ function UserStories() {
                                 </NavLink>
                                 <p>{dateWritten}</p>
                                 <NavLink to={`/edit/story/${story.id}`}>
-                                    <button type="submit">Edit</button>
+                                    <button className="edit-del-btn" type="submit">Edit</button>
                                 </NavLink>
+                                    <button className="edit-del-btn" type="submit"
+                                    onClick={() => dispatch(deleteStory(story.id))}>
+                                        Delete
+                                    </button>
                             </li>
                         )
                     })}

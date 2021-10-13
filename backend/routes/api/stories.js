@@ -15,9 +15,12 @@ router.get('/', asyncHandler(async function(req, res) {
 
 //inserts a story into the Stories table
 router.post('/', asyncHandler(async function(req, res) {
-      let newStory = await Story.create(req.body);
-      if(newStory) {
-        return res.json(newStory);
+      const newStory = await Story.create(req.body);
+      const story = await Story.findByPk(newStory.id, {
+        include: User
+    });
+      if(story) {
+        return res.json(story);
       }
     })
   );
@@ -31,6 +34,16 @@ router.put('/:id', asyncHandler(async function(req, res) {
   if(updatedStory) {
     return res.json(updatedStory);
   }
+})
+);
+
+//deletes a story
+router.delete('/delete/:id', asyncHandler(async function(req, res) {
+  const storyId = req.params.id;
+  await Story.destroy({ where: { id: storyId } })
+  .then(() => {
+    return res.json({message: 'Success'});
+   })
 })
 );
 
