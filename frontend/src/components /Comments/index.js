@@ -24,13 +24,16 @@ function Comments() {
 
     const [body, setBody] = useState("");
     const [errors, setErrors] = useState([]);
-
+    let newObj = {};
+    for(const comment of commentsArr) {
+        newObj[comment.id] = false;
+    }
 
     const [editBody, setEditBody] = useState("");
     const [editErrors, setEditErrors] = useState([]);
     const [showEditBox, setshowEditBox] = useState(false);
-    const [showComment, setshowComment] = useState(true);
     const [showCommentId, setshowCommentId] = useState(null);
+    const [showEditBoxArr, setEditBoxArr] = useState(newObj);
 
 
     //handles an edited comment submission
@@ -48,10 +51,7 @@ function Comments() {
 
 
         setshowEditBox(false)
-        setshowComment(true)
         setshowCommentId(null)
-
-        console.log(editedComment)
 
         return dispatch(updateComment(editedComment))
                 .then(() => {
@@ -94,32 +94,37 @@ function Comments() {
                     <h6>Log in / sign up to submit, edit, or delete a comment!</h6>
                 }
                 {sessionUser &&
-                    <form id="comments-form" onSubmit={handleSubmit}>
-                        <ul id="ws-errors">
-                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </ul>
-                        <label className="ws-form-field">
-                            <textarea
-                            rows="7"
-                            cols="40"
-                            value={body}
-                            placeholder="Add a comment..."
-                            onChange={(e) => setBody(e.target.value)}
-                            required
-                            />
-                        </label>
-                        <button id="wc-button" type="submit">Submit</button>
-                    </form>
+                    <div>
+                        <form id="comments-form" onSubmit={handleSubmit}>
+                            <ul id="ws-errors">
+                                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                            </ul>
+                            <label className="ws-form-field">
+                                <textarea
+                                rows="7"
+                                cols="40"
+                                value={body}
+                                placeholder="Add a comment..."
+                                onChange={(e) => setBody(e.target.value)}
+                                required
+                                />
+                            </label>
+                            <button id="wc-button" type="submit">Submit</button>
+                        </form>
+                        <button id="wc-button" type="submit" onClick={() => setBody("")}>
+                            Cancel
+                        </button>
+                    </div>
                 }
-                <div>
+                <div id="comments-div">
                     <ul>
                     {storyComments.map(comment => {
                         let d = new Date(comment.createdAt);
                         let dateWritten = d.toString().slice(4, 10);
                         return (
-                        <li key={comment.id} id="comments-list">
-                            {showComment &&
-                                <div>
+                        <li key={comment.id} className="comments-list">
+                            {!showEditBoxArr[comment.id] &&
+                                <div id={comment.id}>
                                     <p>{comment.User.name}</p>
                                     <p>{dateWritten}</p>
                                     <p>{comment.body}</p>
@@ -128,9 +133,11 @@ function Comments() {
                                         <button id="wc-button" type="submit"
                                         onClick={() => {
                                             setshowEditBox(true)
-                                            setshowComment(false)
                                             setshowCommentId(comment.id)
                                             setEditBody(comment.body)
+                                            let newobj = {...newObj}
+                                            newobj[comment.id] = true;
+                                            setEditBoxArr(newobj)
                                             }
                                         }>
                                             Edit
@@ -142,7 +149,8 @@ function Comments() {
                                         </button>
                                     }
                                 </div>
-                            }
+                    }
+
                             {sessionUser && showEditBox && (showCommentId === comment.id) &&
                                 <div>
                                     <form id="comments-form" onSubmit={handleEdit}>
@@ -158,14 +166,20 @@ function Comments() {
                                         required
                                         />
                                     </label>
-                                    <button id="wc-button" type="submit" >
+                                    <button id="wc-button" type="submit" onClick={() => {
+                                        let newobj = {...showEditBoxArr}
+                                        newobj[comment.id] = false;
+                                        setEditBoxArr(newobj)
+                                    }}>
                                         Save
                                     </button>
                                 </form>
                                 <button id="wc-button" type="submit" onClick={ () => {
                                     setshowEditBox(false)
-                                    setshowComment(true)
                                     setshowCommentId(null)
+                                    let newobj = {...newObj}
+                                    newobj[comment.id] = false;
+                                    setEditBoxArr(newobj)
                                     }
                                 }>
                                     Cancel

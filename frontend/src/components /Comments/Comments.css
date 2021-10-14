@@ -1,8 +1,12 @@
-#comments-list {
+.comments-list {
     padding: 20px;
     border-bottom: 1px solid black;
 }
 
 #wc-button {
     margin: 10px;
+}
+
+#comments-div {
+    overflow-x: scroll;
 }
