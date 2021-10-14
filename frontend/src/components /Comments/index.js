@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createComment } from "../../store/comments";
+import { createComment, deleteComment } from "../../store/comments";
 import './Comments.css';
 
 function ReadComments() {
@@ -37,6 +37,7 @@ function ReadComments() {
         };
 
         return dispatch(createComment(newComment))
+                .then(() => setBody(""))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -79,10 +80,14 @@ function ReadComments() {
                             <p>{dateWritten}</p>
                             <p>{comment.body}</p>
                             {sessionUser && (sessionUser.id === comment.userId) &&
-                                <button id="wc-button" type="submit">Edit</button>
+                                <button id="wc-button" type="submit">
+                                    Edit
+                                </button>
                             }
                             {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
-                                <button id="wc-button" type="submit">Delete</button>
+                                <button id="wc-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
+                                    Delete
+                                </button>
                             }
                         </li>
                         )

@@ -36,9 +36,29 @@ router.post('/', requireAuth, validateComment, asyncHandler(async function(req, 
   })
 );
 
+//edits a comment
+router.put('/:id', requireAuth, validateComment, asyncHandler(async function(req, res) {
+    await Comment.update(req.body, { where: { id: req.body.id } });
+    const updatedComment = await Comment.findByPk(req.body.id, {
+      include: [User, Story]
+    });
+
+    if(updatedComment) {
+      return res.json(updatedComment);
+    }
+  })
+  );
 
 
-
+//deletes a comment
+router.delete('/delete/:id', requireAuth, asyncHandler(async function(req, res) {
+    const commentId = req.params.id;
+    const deletedComment = await Comment.destroy({ where: { id: commentId } })
+    if(deletedComment) {
+      return res.json(commentId);
+    }
+  })
+  );
 
 
 module.exports = router;
