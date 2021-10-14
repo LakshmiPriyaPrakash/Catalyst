@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createComment, deleteComment } from "../../store/comments";
+import { createComment, updateComment , deleteComment } from "../../store/comments";
 import './Comments.css';
 
-function ReadComments() {
+function Comments() {
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -25,10 +25,47 @@ function ReadComments() {
     const [body, setBody] = useState("");
     const [errors, setErrors] = useState([]);
 
+
+    const [editBody, setEditBody] = useState("");
+    const [editErrors, setEditErrors] = useState([]);
     const [showEditBox, setshowEditBox] = useState(false);
     const [showComment, setshowComment] = useState(true);
     const [showCommentId, setshowCommentId] = useState(null);
 
+
+    //handles an edited comment submission
+    const handleEdit = async (e) => {
+        e.preventDefault();
+
+        const userId = sessionUser.id;
+
+        const editedComment = {
+            id: showCommentId,
+            userId,
+            storyId: Number(storyId),
+            body: editBody
+        };
+
+
+        setshowEditBox(false)
+        setshowComment(true)
+        setshowCommentId(null)
+
+        console.log(editedComment)
+
+        return dispatch(updateComment(editedComment))
+                .then(() => {
+                    setBody("")
+                    setEditErrors([])
+                })
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setEditErrors(data.errors);
+                });
+
+      };
+
+    //handles new comment submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -39,6 +76,7 @@ function ReadComments() {
             storyId: Number(storyId),
             body
         };
+
 
         return dispatch(createComment(newComment))
                 .then(() => setBody(""))
@@ -92,6 +130,7 @@ function ReadComments() {
                                             setshowEditBox(true)
                                             setshowComment(false)
                                             setshowCommentId(comment.id)
+                                            setEditBody(comment.body)
                                             }
                                         }>
                                             Edit
@@ -105,29 +144,33 @@ function ReadComments() {
                                 </div>
                             }
                             {sessionUser && showEditBox && (showCommentId === comment.id) &&
-                                <form id="comments-form" onSubmit={handleSubmit}>
-                                <ul id="ws-errors">
-                                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                                </ul>
-                                <label className="ws-form-field">
-                                    <textarea
-                                    rows="7"
-                                    cols="40"
-                                    value={comment.body}
-                                    placeholder="Add a comment..."
-                                    onChange={(e) => setBody(e.target.value)}
-                                    required
-                                    />
-                                </label>
-                                <button id="wc-button" type="submit" onClick={() => {
+                                <div>
+                                    <form id="comments-form" onSubmit={handleEdit}>
+                                    <ul id="ws-errors">
+                                        {editErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+                                    </ul>
+                                    <label className="ws-form-field">
+                                        <textarea
+                                        rows="7"
+                                        cols="40"
+                                        value={editBody}
+                                        onChange={(e) => setEditBody(e.target.value)}
+                                        required
+                                        />
+                                    </label>
+                                    <button id="wc-button" type="submit" >
+                                        Save
+                                    </button>
+                                </form>
+                                <button id="wc-button" type="submit" onClick={ () => {
                                     setshowEditBox(false)
                                     setshowComment(true)
                                     setshowCommentId(null)
                                     }
                                 }>
-                                    Save
+                                    Cancel
                                 </button>
-                            </form>
+                            </div>
                         }
                         </li>
                         )
@@ -142,4 +185,4 @@ function ReadComments() {
 
 
 
-export default ReadComments;
+export default Comments;
