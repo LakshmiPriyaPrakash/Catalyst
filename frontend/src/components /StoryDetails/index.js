@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import ReadComments from "../Comments";
 import './StoryDetails.css';
 
 function StoryDetail() {
@@ -29,7 +30,7 @@ function StoryDetail() {
                     <div className="sidebar"
                         style={showComments ? { transform: 'translateX(-100%)' }:{}}
                     >
-                        Does this display?
+                        <ReadComments storyId={storyId}/>
                         <button type="submit" onClick={() => setShowComments(false)}>close</button>
                     </div>
                 </div>
