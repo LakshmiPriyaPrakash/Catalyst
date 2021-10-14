@@ -10,6 +10,7 @@ import UserStories from "./components /UserStories";
 import WriteStory from "./components /WriteStory";
 import EditStory from "./components /UpdateStory";
 import { getStories } from "./store/stories";
+import { getComments } from "./store/comments";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getStories());
+    dispatch(getComments());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
