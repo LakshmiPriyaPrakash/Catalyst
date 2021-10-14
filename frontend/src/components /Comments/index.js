@@ -25,6 +25,10 @@ function ReadComments() {
     const [body, setBody] = useState("");
     const [errors, setErrors] = useState([]);
 
+    const [showEditBox, setshowEditBox] = useState(false);
+    const [showComment, setshowComment] = useState(true);
+    const [showCommentId, setshowCommentId] = useState(null);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -76,19 +80,55 @@ function ReadComments() {
                         let dateWritten = d.toString().slice(4, 10);
                         return (
                         <li key={comment.id} id="comments-list">
-                            <p>{comment.User.name}</p>
-                            <p>{dateWritten}</p>
-                            <p>{comment.body}</p>
-                            {sessionUser && (sessionUser.id === comment.userId) &&
-                                <button id="wc-button" type="submit">
-                                    Edit
-                                </button>
+                            {showComment &&
+                                <div>
+                                    <p>{comment.User.name}</p>
+                                    <p>{dateWritten}</p>
+                                    <p>{comment.body}</p>
+
+                                    {sessionUser && (sessionUser.id === comment.userId) &&
+                                        <button id="wc-button" type="submit"
+                                        onClick={() => {
+                                            setshowEditBox(true)
+                                            setshowComment(false)
+                                            setshowCommentId(comment.id)
+                                            }
+                                        }>
+                                            Edit
+                                        </button>
+                                    }
+                                    {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
+                                        <button id="wc-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
+                                            Delete
+                                        </button>
+                                    }
+                                </div>
                             }
-                            {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
-                                <button id="wc-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
-                                    Delete
+                            {sessionUser && showEditBox && (showCommentId === comment.id) &&
+                                <form id="comments-form" onSubmit={handleSubmit}>
+                                <ul id="ws-errors">
+                                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                                </ul>
+                                <label className="ws-form-field">
+                                    <textarea
+                                    rows="7"
+                                    cols="40"
+                                    value={comment.body}
+                                    placeholder="Add a comment..."
+                                    onChange={(e) => setBody(e.target.value)}
+                                    required
+                                    />
+                                </label>
+                                <button id="wc-button" type="submit" onClick={() => {
+                                    setshowEditBox(false)
+                                    setshowComment(true)
+                                    setshowCommentId(null)
+                                    }
+                                }>
+                                    Save
                                 </button>
-                            }
+                            </form>
+                        }
                         </li>
                         )
                     })}
