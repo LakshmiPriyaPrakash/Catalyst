@@ -1,34 +1,28 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Stories', {
+    await queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      authorId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Users' },
         onDelete: 'CASCADE',
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      subtitle: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      imageUrl: {
-        type: Sequelize.STRING,
-        allowNull: false
+      storyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Stories' },
+        onDelete: 'CASCADE',
       },
       body: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +37,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Stories');
+    await queryInterface.dropTable('Comments');
   }
 };
