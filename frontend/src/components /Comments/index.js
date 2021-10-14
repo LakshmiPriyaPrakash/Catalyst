@@ -10,7 +10,11 @@ function ReadComments() {
 
     const stories = useSelector(state => state.stories);
     const storiesArr = Object.values(stories);
-    const story = storiesArr.filter(story => story.authorId === sessionUser.id);
+    let story;
+    if(sessionUser) {
+        story = storiesArr.filter(story => story.authorId === sessionUser.id);
+    }
+
 
     const comments = useSelector(state => state.comments);
     const commentsArr = Object.values(comments);
@@ -40,10 +44,12 @@ function ReadComments() {
 
       };
 
-      if(storyComments.length) {
         return (
             <>
                 <h3>Comments</h3>
+                {!sessionUser &&
+                    <h6>Log in / sign up to submit, edit, or delete a comment!</h6>
+                }
                 {sessionUser &&
                     <form id="comments-form" onSubmit={handleSubmit}>
                         <ul id="ws-errors">
@@ -85,11 +91,6 @@ function ReadComments() {
                 </div>
             </>
         );
-    } else {
-        return (
-            <h2>Comments</h2>
-        )
-    }
 }
 
 
