@@ -30,7 +30,7 @@ function StoryDetail() {
                     <div className="sidebar"
                         style={showComments ? { transform: 'translateX(-100%)' }:{}}
                     >
-                        <ReadComments storyId={storyId}/>
+                        <ReadComments />
                         <button type="submit" onClick={() => setShowComments(false)}>close</button>
                     </div>
                 </div>
