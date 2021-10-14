@@ -39,22 +39,24 @@ function ReadComments() {
         return (
             <>
                 <h3>Comments</h3>
-                <form id="comments-form" onSubmit={handleSubmit}>
-                    <ul id="ws-errors">
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <label className="ws-form-field">
-                        <textarea
-                        rows="7"
-                        cols="40"
-                        value={body}
-                        placeholder="Add a comment..."
-                        onChange={(e) => setBody(e.target.value)}
-                        required
-                        />
-                    </label>
-                    <button id="wc-button" type="submit">Submit</button>
-                </form>
+                {sessionUser &&
+                    <form id="comments-form" onSubmit={handleSubmit}>
+                        <ul id="ws-errors">
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                        <label className="ws-form-field">
+                            <textarea
+                            rows="7"
+                            cols="40"
+                            value={body}
+                            placeholder="Add a comment..."
+                            onChange={(e) => setBody(e.target.value)}
+                            required
+                            />
+                        </label>
+                        <button id="wc-button" type="submit">Submit</button>
+                    </form>
+                }
                 <div>
                     <ul>
                     {storyComments.map(comment => {
