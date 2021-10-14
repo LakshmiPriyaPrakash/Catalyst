@@ -67,6 +67,9 @@ function ReadComments() {
                             <p>{comment.User.name}</p>
                             <p>{dateWritten}</p>
                             <p>{comment.body}</p>
+                            {sessionUser && (sessionUser.id === comment.userId) &&
+                                <button id="wc-button" type="submit">Edit</button>
+                            }
                         </li>
                         )
                     })}
