@@ -7,6 +7,11 @@ import './Comments.css';
 function ReadComments() {
     const { storyId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+
+    const stories = useSelector(state => state.stories);
+    const storiesArr = Object.values(stories);
+    const story = storiesArr.filter(story => story.authorId === sessionUser.id);
+
     const comments = useSelector(state => state.comments);
     const commentsArr = Object.values(comments);
     const storyComments = commentsArr.filter(comment => comment.storyId === Number(storyId))
@@ -69,6 +74,9 @@ function ReadComments() {
                             <p>{comment.body}</p>
                             {sessionUser && (sessionUser.id === comment.userId) &&
                                 <button id="wc-button" type="submit">Edit</button>
+                            }
+                            {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
+                                <button id="wc-button" type="submit">Delete</button>
                             }
                         </li>
                         )
