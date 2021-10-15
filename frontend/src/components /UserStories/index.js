@@ -19,31 +19,51 @@ function UserStories() {
 
         return (
             <>
-                <h2>Your stories</h2>
-                 <ul>
-                    {userStories.map(story => {
-                        let d = new Date(story.createdAt);
-                        let dateWritten = d.toString().slice(4, 10)
-                        return(
-                            <li key={story.id} id="feed-list">
-                                <p>{story.User.name}</p>
-                                <NavLink id="story-link" to={`/stories/${story.id}`}>
-                                    <img id="feed-img" src={story.imageUrl} alt="story"/>
-                                    <h3>{story.title}</h3>
-                                    <h5>{story.subtitle}</h5>
-                                </NavLink>
-                                <p>{dateWritten}</p>
-                                <NavLink to={`/edit/story/${story.id}`}>
-                                    <button className="edit-del-btn" type="submit">Edit</button>
-                                </NavLink>
-                                    <button className="edit-del-btn" type="submit"
-                                    onClick={() => dispatch(deleteStory(story.id))}>
-                                        Delete
-                                    </button>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <div id="ud-feed-container">
+                    <div id="ud-left-div">
+
+                    </div>
+                    <div id="ud-center-div">
+                        <h2>Your stories</h2>
+                        <ul>
+                            {userStories.map(story => {
+                                let d = new Date(story.createdAt);
+                                let dateWritten = d.toString().slice(4, 10)
+                                return(
+                                    <li key={story.id} id="feed-list">
+                                        <div className="story-container">
+                                            <div className="story-details">
+                                                <p>{story.User.name}</p>
+                                                <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                                    <h2>{story.title}</h2>
+                                                    <p id="subtitle">{story.subtitle}</p>
+                                                </NavLink>
+                                                <p>{dateWritten}</p>
+                                                <div id="e-d-btn-ctn">
+                                                    <NavLink to={`/edit/story/${story.id}`}>
+                                                        <button className="edit-del-btn" type="submit">Edit</button>
+                                                    </NavLink>
+                                                    <button className="edit-del-btn" type="submit"
+                                                        onClick={() => dispatch(deleteStory(story.id))}>
+                                                            Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                                    <img id="feed-img" src={story.imageUrl} alt="story"/>
+                                                </NavLink>
+                                            </div>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div id="ud-right-div">
+
+                    </div>
+                </div>
             </>
         )
     } else {
