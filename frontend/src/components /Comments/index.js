@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FaEdit } from 'react-icons/fa';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { createComment, updateComment , deleteComment } from "../../store/comments";
 import './Comments.css';
 
@@ -142,12 +144,12 @@ function Comments() {
                                             setEditBoxArr(newobj)
                                             }
                                         }>
-                                            Edit
+                                            <FaEdit />
                                         </button>
                                     }
                                     {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
                                         <button className="ed-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
-                                            Delete
+                                            <RiDeleteBin5Line />
                                         </button>
                                     }
                                 </div>
