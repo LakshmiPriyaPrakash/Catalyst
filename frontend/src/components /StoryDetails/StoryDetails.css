@@ -42,7 +42,7 @@
     width: 500px;
     right: -500px;
     transition: all 0.2s linear;
-    background-color: whitesmoke;
+    background-color: white;
     box-shadow: 0px 0 8px 1px lightgray;
     overflow: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -51,4 +51,13 @@
 
 .sidebar::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
+}
+
+#sidebar-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: sans-serif;
+    font-size: small;
+    cursor: pointer;
 }

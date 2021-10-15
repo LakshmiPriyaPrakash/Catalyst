@@ -1,8 +1,45 @@
 .comments-list {
     padding: 20px;
     border-bottom: 1px solid black;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-#wc-button {
+.wc-button {
     margin: 10px;
+    background-color: transparent;
+    border-radius: 30px;
+    width: 20%;
+    border-color:rgb(0, 183, 255);
+}
+
+.ed-button {
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 183, 255);
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.sc-button {
+    margin: 10px;
+    background-color: transparent;
+    border-radius: 30px;
+    width: 20%;
+    border-color:rgb(152, 231, 152)
+}
+
+#comments-form{
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.ec-field {
+    border-radius: 5px;
+}
+
+.ic-field {
+    border-radius: 5px;
 }

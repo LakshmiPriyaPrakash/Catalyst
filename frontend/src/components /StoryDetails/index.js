@@ -31,7 +31,7 @@ function StoryDetail() {
                         style={showComments ? { transform: 'translateX(-100%)' }:{}}
                     >
                         <Comments />
-                        <button type="submit" onClick={() => setShowComments(false)}>close</button>
+                        <span id="sidebar-close" onClick={() => setShowComments(false)}>X</span>
                     </div>
                 </div>
             </>
