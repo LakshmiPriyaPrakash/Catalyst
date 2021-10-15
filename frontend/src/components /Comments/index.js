@@ -89,7 +89,7 @@ function Comments() {
 
         return (
             <>
-                <h3>Comments</h3>
+                <h3 className="comments-title">Comments</h3>
                 {!sessionUser &&
                     <h6>Log in / sign up to submit, edit, or delete a comment!</h6>
                 }
@@ -161,7 +161,7 @@ function Comments() {
                                     </ul>
                                     <label >
                                         <textarea
-                                        className="ec-field"
+                                        className="ic-field"
                                         rows="5"
                                         cols="30"
                                         value={editBody}
