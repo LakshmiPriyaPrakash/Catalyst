@@ -99,8 +99,9 @@ function Comments() {
                             <ul id="ws-errors">
                                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                             </ul>
-                            <label className="ws-form-field">
+                            <label >
                                 <textarea
+                                className="ic-field"
                                 rows="7"
                                 cols="40"
                                 value={body}
@@ -109,10 +110,10 @@ function Comments() {
                                 required
                                 />
                             </label>
-                            <button id="wc-button" type="submit">Submit</button>
+                            <button className="wc-button" type="submit">Submit</button>
                         </form>
-                        <button id="wc-button" type="submit" onClick={() => setBody("")}>
-                            Cancel
+                        <button className="wc-button" type="submit" onClick={() => setBody("")}>
+                            Clear
                         </button>
                     </div>
                 }
@@ -130,7 +131,7 @@ function Comments() {
                                     <p>{comment.body}</p>
 
                                     {sessionUser && (sessionUser.id === comment.userId) &&
-                                        <button id="wc-button" type="submit"
+                                        <button className="ed-button" type="submit"
                                         onClick={() => {
                                             setshowEditBox(true)
                                             setshowCommentId(comment.id)
@@ -144,7 +145,7 @@ function Comments() {
                                         </button>
                                     }
                                     {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
-                                        <button id="wc-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
+                                        <button className="ed-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
                                             Delete
                                         </button>
                                     }
@@ -157,24 +158,25 @@ function Comments() {
                                     <ul id="ws-errors">
                                         {editErrors.map((error, idx) => <li key={idx}>{error}</li>)}
                                     </ul>
-                                    <label className="ws-form-field">
+                                    <label >
                                         <textarea
-                                        rows="7"
-                                        cols="40"
+                                        className="ec-field"
+                                        rows="5"
+                                        cols="30"
                                         value={editBody}
                                         onChange={(e) => setEditBody(e.target.value)}
                                         required
                                         />
                                     </label>
-                                    <button id="wc-button" type="submit" onClick={() => {
-                                        let newobj = {...showEditBoxArr}
+                                    <button className="sc-button" type="submit" onClick={() => {
+                                        let newobj = {...newObj}
                                         newobj[comment.id] = false;
                                         setEditBoxArr(newobj)
                                     }}>
                                         Save
                                     </button>
                                 </form>
-                                <button id="wc-button" type="submit" onClick={ () => {
+                                <button className="sc-button" type="submit" onClick={ () => {
                                     setshowEditBox(false)
                                     setshowCommentId(null)
                                     let newobj = {...newObj}

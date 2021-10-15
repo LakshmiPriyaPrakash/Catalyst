@@ -17,10 +17,10 @@ function StoryDetail() {
             <>
                 <div id="story-comments">
                     <div id="story-details">
-                        <p className="story-elements">{story.User.name}</p>
-                        <p className="story-elements">{dateWritten}</p>
                         <h2 className="story-elements">{story.title}</h2>
                         <h5 className="story-elements">{story.subtitle}</h5>
+                        <p className="story-elements">{story.User.name}</p>
+                        <p className="story-elements">{dateWritten}</p>
                         <img id="sd-img"src={story.imageUrl} alt="story"/>
                         <p className="story-elements">{story.body}</p>
                         <button id="comments-btn" type="submit" onClick={() => setShowComments(true)}>
@@ -31,7 +31,7 @@ function StoryDetail() {
                         style={showComments ? { transform: 'translateX(-100%)' }:{}}
                     >
                         <Comments />
-                        <button type="submit" onClick={() => setShowComments(false)}>close</button>
+                        <span id="sidebar-close" onClick={() => setShowComments(false)}>X</span>
                     </div>
                 </div>
             </>

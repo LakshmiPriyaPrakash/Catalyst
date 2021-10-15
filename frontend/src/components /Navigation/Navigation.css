@@ -3,9 +3,10 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(187, 245, 187);
+    background-color: rgb(171, 230, 171);
     height: 80px;
     width: 100%;
+    border-bottom: 1px solid black;
 }
 
 #home-link {
@@ -16,7 +17,13 @@
 }
 
 #nav-buttons {
-    width: 200px;
+    width: 350px;
     display: flex;
     justify-content: space-between;
+}
+
+#demo-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

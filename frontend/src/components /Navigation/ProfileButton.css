@@ -11,6 +11,9 @@
 
 #profile-button {
     cursor: pointer;
+    padding: 7px;
+    border-radius: 20px;
+
 }
 
 #profile-dropdown {
@@ -32,4 +35,10 @@
 
 .prof-list-item:hover {
     background-color: whitesmoke;
+}
+
+#logout-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }

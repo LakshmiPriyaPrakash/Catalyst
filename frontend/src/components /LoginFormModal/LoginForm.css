@@ -1,3 +1,10 @@
+#nav-login-btn {
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
 #login-form {
     display: flex;
     justify-content: center;
@@ -12,8 +19,31 @@
 
 #login-button {
     margin: 20px;
+    padding: 10px 20px;
+    background-color: lightskyblue;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #login-errors {
     color: rgb(255, 73, 73);
+}
+
+input
+{
+    border-radius: 5px;
+    border-width: thin;
+    border-color: rgb(9, 111, 243);
+    font-size: 18px;
+    height: 40px;
+
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px 5px rgb(215, 231, 250);
+    transition: all 0.20s ease-in-out;
+
 }

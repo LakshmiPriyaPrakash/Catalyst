@@ -20,13 +20,21 @@ function UserFeed() {
                         let dateWritten = d.toString().slice(4, 10)
                         return(
                             <li key={story.id} id="feed-list">
-                                <p>{story.User.name}</p>
-                                <NavLink id="story-link" to={`/stories/${story.id}`}>
-                                    <img id="feed-img" src={story.imageUrl} alt="story"/>
-                                    <h3>{story.title}</h3>
-                                    <h5>{story.subtitle}</h5>
-                                </NavLink>
-                                <p>{dateWritten}</p>
+                                <div className="story-container">
+                                    <div className="story-details">
+                                        <p>{story.User.name}</p>
+                                        <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                            <h2>{story.title}</h2>
+                                            <p id="subtitle">{story.subtitle}</p>
+                                        </NavLink>
+                                        <p>{dateWritten}</p>
+                                    </div>
+                                    <div>
+                                        <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                            <img id="feed-img" src={story.imageUrl} alt="story"/>
+                                        </NavLink>
+                                    </div>
+                                </div>
                             </li>
                         )
                     })}

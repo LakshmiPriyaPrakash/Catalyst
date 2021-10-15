@@ -53,7 +53,7 @@ function ProfileButton() {
               </NavLink>
             </li>
             <li className="prof-list-item">
-              <button onClick={logout}>Log Out</button>
+              <button id="logout-btn" onClick={logout}>Log Out</button>
             </li>
           </ul>
         )}
