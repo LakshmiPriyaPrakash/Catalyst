@@ -16,7 +16,13 @@
 }
 
 #nav-buttons {
-    width: 300px;
+    width: 350px;
     display: flex;
     justify-content: space-between;
+}
+
+#demo-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

@@ -23,8 +23,9 @@ function Navigation({ isLoaded }){
       <>
         <LoginFormModal />
         <SignupFormModal />
-        <button  onClick={() => dispatch(sessionActions.login({ credential, password }))}>
-          Demo User
+        <button id="demo-btn"
+          onClick={() => dispatch(sessionActions.login({ credential, password }))}>
+            Demo User
         </button>
       </>
     );
