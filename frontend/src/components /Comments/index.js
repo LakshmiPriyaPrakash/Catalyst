@@ -112,7 +112,7 @@ function Comments() {
                             <button id="wc-button" type="submit">Submit</button>
                         </form>
                         <button id="wc-button" type="submit" onClick={() => setBody("")}>
-                            Cancel
+                            Clear
                         </button>
                     </div>
                 }
