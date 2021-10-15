@@ -1,6 +1,23 @@
+.story-container {
+    display: flex;
+}
+
+.story-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+    margin-right: 20px;
+    width: 600px;
+}
+
+#subtitle {
+    color: gray;
+    padding-top: 10px;
+}
 
 #feed-list {
-    padding: 20px;
+    padding: 30px;
 }
 
 #feed-img {
