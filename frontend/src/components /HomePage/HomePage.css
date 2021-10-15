@@ -3,6 +3,21 @@
     flex-direction: row;
     justify-content: space-evenly;
     height: 400px;
+    background-color: rgb(171, 230, 171);
+    border-bottom: 1px solid black;
+}
+
+#quotes-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#quote1 {
+    font-size: 50px;
+    font-weight: bold;
 }
 
 #hp-feed-container {
