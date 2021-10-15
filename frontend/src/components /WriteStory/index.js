@@ -48,7 +48,7 @@ function WriteStory() {
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
                         <div className="ws-form-field">
-                            <label for="title">Title</label>
+                            <label htmlFor="title">Title</label>
                                 <input
                                 className="sf-input"
                                 id="title"
