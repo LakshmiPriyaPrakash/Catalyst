@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { deleteStory } from '../../store/stories';
+import { FaEdit } from 'react-icons/fa';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import './UserStories.css';
 
 
@@ -24,7 +26,7 @@ function UserStories() {
 
                     </div>
                     <div id="ud-center-div">
-                        <h2>Your stories</h2>
+                        <h2 className="rec-title">Your stories</h2>
                         <ul>
                             {userStories.map(story => {
                                 let d = new Date(story.createdAt);
@@ -41,11 +43,11 @@ function UserStories() {
                                                 <p>{dateWritten}</p>
                                                 <div id="e-d-btn-ctn">
                                                     <NavLink to={`/edit/story/${story.id}`}>
-                                                        <button className="edit-del-btn" type="submit">Edit</button>
+                                                        <button className="edit-del-btn" type="submit"><FaEdit size={20} /></button>
                                                     </NavLink>
                                                     <button className="edit-del-btn" type="submit"
                                                         onClick={() => dispatch(deleteStory(story.id))}>
-                                                            Delete
+                                                            <RiDeleteBin5Line size={20} />
                                                     </button>
                                                 </div>
                                             </div>

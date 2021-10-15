@@ -7,6 +7,7 @@
 
 .ws-title {
     margin-top: 30px;
+    margin-left: 250px;
 }
 
 .story-form {
@@ -60,11 +61,12 @@
 
 }
 
-#ws-button {
+.ws-button {
     margin: 30px;
     background-color: transparent;
     border-radius: 30px;
     width: 20%;
     height: 40px;
     border-color:rgb(0, 183, 255);
+    margin-left: 40%
 }

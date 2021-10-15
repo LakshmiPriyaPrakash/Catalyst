@@ -97,7 +97,7 @@ function WriteStory() {
                                 required
                                 />
                         </div>
-                        <button id="ws-button" type="submit">Submit</button>
+                        <button className="ws-button" type="submit">Submit</button>
                         </form>
                 </div>
             </>

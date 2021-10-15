@@ -13,7 +13,7 @@ function UserFeed() {
     if(recStories.length) {
         return (
             <>
-                <h2>Recommended stories</h2>
+                <h2 className="rec-title">Recommended stories</h2>
                  <ul>
                     {recStories.map(story => {
                         let d = new Date(story.createdAt);
