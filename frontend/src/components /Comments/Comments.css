@@ -2,6 +2,14 @@
     margin-left: 7%;
     margin-top: 7%;
 }
+
+.comments-subtitle {
+    margin-left: 7%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    color: gray;
+}
+
 .comments-list {
     padding: 20px;
     border-bottom: 1px solid black;

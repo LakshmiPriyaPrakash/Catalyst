@@ -93,7 +93,7 @@ function Comments() {
             <>
                 <h3 className="comments-title">Comments</h3>
                 {!sessionUser &&
-                    <h6>Log in / sign up to submit, edit, or delete a comment!</h6>
+                    <h5 className="comments-subtitle">Log in / sign up to submit, edit, or delete a comment!</h5>
                 }
                 {sessionUser &&
                     <div>

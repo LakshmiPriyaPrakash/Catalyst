@@ -61,10 +61,10 @@ function WriteStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label for="subtitle">Subtitle</label>
+                            <label for="story-subtitle">Subtitle</label>
                                 <input
                                 className="sf-input"
-                                id="subtitle"
+                                id="story-subtitle"
                                 type="text"
                                 value={subtitle}
                                 placeholder="Add a subtitle..."
