@@ -111,10 +111,11 @@ function Comments() {
                                 />
                             </label>
                             <button className="wc-button" type="submit">Submit</button>
+                            <span id="clear" onClick={() => setBody("")}>
+                                Clear
+                            </span>
                         </form>
-                        <button className="wc-button" type="submit" onClick={() => setBody("")}>
-                            Clear
-                        </button>
+
                     </div>
                 }
                 <div id="comments-div">
@@ -175,17 +176,17 @@ function Comments() {
                                     }}>
                                         Save
                                     </button>
+                                    <span id="clear" onClick={() => {
+                                        setshowEditBox(false)
+                                        setshowCommentId(null)
+                                        let newobj = {...newObj}
+                                        newobj[comment.id] = false;
+                                        setEditBoxArr(newobj)
+                                        }
+                                    }>
+                                        Cancel
+                                    </span>
                                 </form>
-                                <button className="sc-button" type="submit" onClick={ () => {
-                                    setshowEditBox(false)
-                                    setshowCommentId(null)
-                                    let newobj = {...newObj}
-                                    newobj[comment.id] = false;
-                                    setEditBoxArr(newobj)
-                                    }
-                                }>
-                                    Cancel
-                                </button>
                             </div>
                         }
                         </li>

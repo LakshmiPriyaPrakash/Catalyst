@@ -94,7 +94,7 @@ function WriteStory() {
         );
       } else {
           return (
-            <Redirect to="/" />
+            history.push("/")
           );
       }
 }

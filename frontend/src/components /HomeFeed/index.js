@@ -11,7 +11,6 @@ function HomeFeed() {
     if(storiesArr.length) {
         return (
             <>
-                <h2></h2>
                  <ul>
                     {storiesArr.map(story => {
                         let d = new Date(story.createdAt);

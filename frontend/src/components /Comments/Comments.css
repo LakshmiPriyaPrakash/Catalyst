@@ -13,6 +13,13 @@
     border-color:rgb(0, 183, 255);
 }
 
+#clear {
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgb(51, 107, 107);
+    margin-left: 10%;
+}
+
 .ed-button {
     margin: 10px;
     border: none;
