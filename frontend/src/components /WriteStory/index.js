@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createStory } from "../../store/stories";
 import { useHistory } from 'react-router-dom';
-import { Redirect } from "react-router";
 import './WriteStory.css'
 
 
@@ -42,54 +41,65 @@ function WriteStory() {
       if(sessionUser) {
         return (
             <>
-                <form id="story-form" onSubmit={handleSubmit}>
-                <h2>Write a Story</h2>
-                <ul id="ws-errors">
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <label className="ws-form-field">
-                    Title
-                    <input
-                    type="text"
-                    value={title}
-                    placeholder="Add a title..."
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                    />
-                </label>
-                <label className="ws-form-field">
-                    Subtitle
-                    <input
-                    type="text"
-                    value={subtitle}
-                    placeholder="Add a subtitle..."
-                    onChange={(e) => setSubtitle(e.target.value)}
-                    required
-                    />
-                </label>
-                <label className="ws-form-field">
-                    Image URL
-                    <input
-                    type="text"
-                    value={imageUrl}
-                    placeholder="Add an image..."
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    required
-                    />
-                </label>
-                <label className="ws-form-field">
-                    Content
-                    <textarea
-                    rows="15"
-                    cols="70"
-                    value={body}
-                    placeholder="write your story..."
-                    onChange={(e) => setBody(e.target.value)}
-                    required
-                    />
-                </label>
-                <button id="ws-button" type="submit">Submit</button>
-                </form>
+                <div className="story-form-container">
+                        <form className="story-form" onSubmit={handleSubmit}>
+                        <h2 className="ws-title">Write a Story</h2>
+                        <ul id="ws-errors">
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                        <div className="ws-form-field">
+                            <label for="title">Title</label>
+                                <input
+                                className="sf-input"
+                                id="title"
+                                type="text"
+                                value={title}
+                                placeholder="Add a title..."
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                                autoFocus={true}
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="story-subtitle">Subtitle</label>
+                                <input
+                                className="sf-input"
+                                id="story-subtitle"
+                                type="text"
+                                value={subtitle}
+                                placeholder="Add a subtitle..."
+                                onChange={(e) => setSubtitle(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="image">Image URL</label>
+                                <input
+                                className="sf-input"
+                                id="image"
+                                type="text"
+                                value={imageUrl}
+                                placeholder="Add an image..."
+                                onChange={(e) => setImageUrl(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="content">Content</label>
+                                <textarea
+                                className="sf-content"
+                                id="content"
+                                rows="15"
+                                cols="70"
+                                value={body}
+                                placeholder="write your story..."
+                                onChange={(e) => setBody(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <button className="ws-button" type="submit">Submit</button>
+                        </form>
+                </div>
             </>
         );
       } else {

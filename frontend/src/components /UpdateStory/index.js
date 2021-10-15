@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { Redirect, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { updateStory } from "../../store/stories";
 import './UpdateStory.css'
 
@@ -46,50 +46,62 @@ function EditStory() {
 
             return (
                 <>
-                    <form id="story-form" onSubmit={handleSubmit} >
-                    <h2>Edit your Story</h2>
-                    <ul id="us-errors">
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <label className="us-form-field">
-                        Title
-                        <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                        />
-                    </label>
-                    <label className="us-form-field">
-                        Subtitle
-                        <input
-                        type="text"
-                        value={subtitle}
-                        onChange={(e) => setSubtitle(e.target.value)}
-                        required
-                        />
-                    </label>
-                    <label className="us-form-field">
-                        Image URL
-                        <input
-                        type="text"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        required
-                        />
-                    </label>
-                    <label className="us-form-field">
-                        Content
-                        <textarea
-                        rows="15"
-                        cols="70"
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                        required
-                        />
-                    </label>
-                    <button id="us-button" type="submit">Update</button>
-                    </form>
+                    <div className="story-form-container">
+                        <form className="story-form" onSubmit={handleSubmit} >
+                        <h2 className="ws-title">Edit your Story</h2>
+                        <ul id="ws-errors">
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                        <div className="ws-form-field">
+                            <label for="title">Title</label>
+                                <input
+                                className="sf-input"
+                                id="title"
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                required
+                                autoFocus={true}
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="story-subtitle">Subtitle</label>
+                                <input
+                                className="sf-input"
+                                id="story-subtitle"
+                                type="text"
+                                value={subtitle}
+                                onChange={(e) => setSubtitle(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="image">Image URL</label>
+                                <input
+                                className="sf-input"
+                                id="image"
+                                type="text"
+                                value={imageUrl}
+                                onChange={(e) => setImageUrl(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <div className="ws-form-field">
+                            <label for="content">Content</label>
+                                <textarea
+                                className="sf-content"
+                                id="content"
+                                rows="15"
+                                cols="70"
+                                value={body}
+                                placeholder="write your story..."
+                                onChange={(e) => setBody(e.target.value)}
+                                required
+                                />
+                        </div>
+                        <button className="ws-button" type="submit">Update</button>
+                        </form>
+                    </div>
                 </>
             );
     } else {

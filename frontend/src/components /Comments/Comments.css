@@ -1,3 +1,15 @@
+.comments-title {
+    margin-left: 7%;
+    margin-top: 7%;
+}
+
+.comments-subtitle {
+    margin-left: 7%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    color: gray;
+}
+
 .comments-list {
     padding: 20px;
     border-bottom: 1px solid black;
@@ -24,7 +36,7 @@
     margin: 10px;
     border: none;
     background-color: transparent;
-    color: rgb(0, 183, 255);
+    color: rgb(15, 133, 180);
     text-decoration: underline;
     cursor: pointer;
 
@@ -43,10 +55,14 @@
     margin-top: 30px;
 }
 
-.ec-field {
-    border-radius: 5px;
-}
-
 .ic-field {
     border-radius: 5px;
+    padding: 10px;
+}
+
+.ic-field:focus {
+    outline: none;
+    box-shadow: 0 0 5px 5px rgb(215, 231, 250);
+    transition: all 0.20s ease-in-out;
+
 }

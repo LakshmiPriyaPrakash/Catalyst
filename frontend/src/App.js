@@ -9,6 +9,7 @@ import StoryDetail from "./components /StoryDetails";
 import UserStories from "./components /UserStories";
 import WriteStory from "./components /WriteStory";
 import EditStory from "./components /UpdateStory";
+import Footer from "./components /Footer";
 import { getStories } from "./store/stories";
 import { getComments } from "./store/comments";
 
@@ -52,6 +53,7 @@ function App() {
         </Route>
       </Switch>
       )}
+      <Footer />
     </>
   );
 }

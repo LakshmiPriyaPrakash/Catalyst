@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FaEdit } from 'react-icons/fa';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { createComment, updateComment , deleteComment } from "../../store/comments";
 import './Comments.css';
 
@@ -89,9 +91,9 @@ function Comments() {
 
         return (
             <>
-                <h3>Comments</h3>
+                <h3 className="comments-title">Comments</h3>
                 {!sessionUser &&
-                    <h6>Log in / sign up to submit, edit, or delete a comment!</h6>
+                    <h5 className="comments-subtitle">Log in / sign up to submit, edit, or delete a comment!</h5>
                 }
                 {sessionUser &&
                     <div>
@@ -142,12 +144,12 @@ function Comments() {
                                             setEditBoxArr(newobj)
                                             }
                                         }>
-                                            Edit
+                                            <FaEdit />
                                         </button>
                                     }
                                     {sessionUser && (sessionUser.id === comment.userId || sessionUser.id === story.authorId) &&
                                         <button className="ed-button" type="submit" onClick={() => dispatch(deleteComment(comment.id))}>
-                                            Delete
+                                            <RiDeleteBin5Line />
                                         </button>
                                     }
                                 </div>
@@ -161,7 +163,7 @@ function Comments() {
                                     </ul>
                                     <label >
                                         <textarea
-                                        className="ec-field"
+                                        className="ic-field"
                                         rows="5"
                                         cols="30"
                                         value={editBody}

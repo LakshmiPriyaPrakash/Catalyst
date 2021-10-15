@@ -26,57 +26,62 @@ function SignupForm() {
   };
 
   return (
-    <form id="signup-form" onSubmit={handleSubmit}>
-      <h2>Join Catalyst.</h2>
-      <ul id="signup-errors">
+    <form className="cred-form" onSubmit={handleSubmit}>
+      <h2 className="form-title">Join Catalyst.</h2>
+      <ul className="cred-errors">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label className="signup-form-field">
+      <label className="cred-form-field">
         Name
         <input
+          className="cred-input"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       </label>
-      <label className="signup-form-field">
+      <label className="cred-form-field">
         Email
         <input
+          className="cred-input"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <label className="signup-form-field">
+      <label className="cred-form-field">
         Username
         <input
+          className="cred-input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
-      <label className="signup-form-field">
+      <label className="cred-form-field">
         Password
         <input
+          className="cred-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label className="signup-form-field">
+      <label className="cred-form-field">
         Confirm Password
         <input
+          className="cred-input"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button id="signup-button" type="submit">Sign Up</button>
+      <button className="cred-button" type="submit">Sign Up</button>
     </form>
   );
 }

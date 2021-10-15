@@ -27,7 +27,7 @@ function Homepage() {
                     <HomeFeed />
                 </div>
                 <div id="hp-right-div">
-                    
+
                 </div>
                 </div>
             </>
