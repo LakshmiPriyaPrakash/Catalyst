@@ -61,7 +61,7 @@ function WriteStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label for="story-subtitle">Subtitle</label>
+                            <label htmlFor="story-subtitle">Subtitle</label>
                                 <input
                                 className="sf-input"
                                 id="story-subtitle"
@@ -73,7 +73,7 @@ function WriteStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label for="image">Image URL</label>
+                            <label htmlFor="image">Image URL</label>
                                 <input
                                 className="sf-input"
                                 id="image"
@@ -85,7 +85,7 @@ function WriteStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label for="content">Content</label>
+                            <label htmlFor="content">Content</label>
                                 <textarea
                                 className="sf-content"
                                 id="content"
