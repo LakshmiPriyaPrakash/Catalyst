@@ -32,8 +32,6 @@ function HomeFeed() {
                                             <img id="feed-img" src={story.imageUrl} alt="story"/>
                                         </NavLink>
                                     </div>
-
-
                                 </div>
                             </li>
                         )
