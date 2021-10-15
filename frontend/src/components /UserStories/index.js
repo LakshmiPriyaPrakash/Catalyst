@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { deleteStory } from '../../store/stories';
 import { Redirect } from 'react-router';
 import './UserStories.css';
@@ -8,6 +8,7 @@ import './UserStories.css';
 
 function UserStories() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const allStories = useSelector(state => state.stories);
     const storiesArr = Object.values(allStories);
@@ -68,7 +69,7 @@ function UserStories() {
         )
     } else {
         return (
-            <Redirect to="/" />
+            history.push("/")
         );
     }
 
