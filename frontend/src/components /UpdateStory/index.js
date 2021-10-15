@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { Redirect, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { updateStory } from "../../store/stories";
 import './UpdateStory.css'
 

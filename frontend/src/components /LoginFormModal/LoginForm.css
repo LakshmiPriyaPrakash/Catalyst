@@ -5,19 +5,19 @@
     background-color: transparent;
 }
 
-#login-form {
+.cred-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.login-form-field {
+.cred-form-field {
     width: 50%;
     margin-top: 20px;
 }
 
-#login-button {
+.cred-button {
     margin: 20px;
     padding: 10px 20px;
     background-color: lightskyblue;
@@ -27,11 +27,12 @@
     cursor: pointer;
 }
 
-#login-errors {
+.cred-errors {
     color: rgb(255, 73, 73);
+    padding: 10px;
 }
 
-input
+.cred-input
 {
     border-radius: 5px;
     border-width: thin;
@@ -41,9 +42,13 @@ input
 
 }
 
-input:focus {
+.cred-input:focus {
     outline: none;
     box-shadow: 0 0 5px 5px rgb(215, 231, 250);
     transition: all 0.20s ease-in-out;
 
+}
+
+.form-title {
+    margin-top: 10%;
 }

@@ -6,29 +6,3 @@
     color: white;
     border-radius: 20px;
 }
-
-#signup-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.signup-form-field {
-    width: 50%;
-    margin-top: 20px;
-}
-
-#signup-button {
-    margin: 20px;
-    padding: 10px 20px;
-    background-color: lightskyblue;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#signup-errors {
-    color: rgb(255, 73, 73);
-}
