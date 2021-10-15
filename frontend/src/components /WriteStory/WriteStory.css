@@ -9,7 +9,7 @@
     margin-top: 30px;
 }
 
-#story-form {
+.story-form {
     display: flex;
     justify-content: center;
     align-items: left;

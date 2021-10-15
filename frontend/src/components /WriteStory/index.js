@@ -42,7 +42,7 @@ function WriteStory() {
         return (
             <>
                 <div className="story-form-container">
-                        <form id="story-form" onSubmit={handleSubmit}>
+                        <form className="story-form" onSubmit={handleSubmit}>
                         <h2 className="ws-title">Write a Story</h2>
                         <ul id="ws-errors">
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
