@@ -43,12 +43,12 @@ function ProfileButton() {
           <ul id="profile-dropdown">
             <li className="prof-list-item">{sessionUser.name}</li>
             <li className="prof-list-item">
-              <NavLink id="story-link" to={`/story/new`}>
+              <NavLink className="story-link" to={`/story/new`}>
                 Write a story
               </NavLink>
             </li>
             <li className="prof-list-item">
-              <NavLink id="story-link" to={`/user/stories`}>
+              <NavLink className="story-link" to={`/user/stories`}>
                 My stories
               </NavLink>
             </li>

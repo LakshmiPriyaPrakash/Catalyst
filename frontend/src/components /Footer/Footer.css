@@ -31,4 +31,9 @@
 .links-logo {
     height: 30px;
     width: 30px;
+    transition: 0.5s all ease-in-out;
+}
+
+.links-logo:hover {
+    transform: scale(1.5);
 }
