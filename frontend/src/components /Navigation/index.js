@@ -16,7 +16,15 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton />
+      <>
+        <NavLink className="story-link" to={`/user/stories`}>
+                  My stories
+        </NavLink>
+        <NavLink className="story-link" to={`/story/new`}>
+                  Write a story
+        </NavLink>
+        <ProfileButton />
+      </>
     );
   } else {
     sessionLinks = (

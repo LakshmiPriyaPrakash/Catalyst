@@ -10,11 +10,20 @@
     color: gray;
 }
 
+#comments-div {
+    margin-top: 50px;
+}
+
 .comments-list {
     padding: 20px;
     border-bottom: 1px solid black;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+#cmt-bdy {
+    line-height: 1.6;
+    margin-top:10px;
 }
 
 .wc-button {

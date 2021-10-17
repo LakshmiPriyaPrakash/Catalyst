@@ -19,6 +19,10 @@
     margin-top: 50px;
 }
 
+#story-body {
+    line-height: 1.6;
+}
+
 .story-elements {
     padding: 10px;
     white-space: pre-wrap;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaRegUserCircle } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { createComment, updateComment , deleteComment } from "../../store/comments";
 import './Comments.css';
@@ -129,9 +129,9 @@ function Comments() {
                         <li key={comment.id} className="comments-list">
                             {!showEditBoxArr[comment.id] &&
                                 <div id={comment.id}>
-                                    <p>{comment.User.name}</p>
-                                    <p>{dateWritten}</p>
-                                    <p>{comment.body}</p>
+                                    <p className="user-name"><FaRegUserCircle /> {comment.User.name}</p>
+                                    <p className="date-written">{dateWritten}</p>
+                                    <p id="cmt-bdy">{comment.body}</p>
 
                                     {sessionUser && (sessionUser.id === comment.userId) &&
                                         <button className="ed-button" type="submit"

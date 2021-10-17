@@ -23,7 +23,7 @@ function StoryDetail() {
                         <p className="story-elements user-name"><FaRegUserCircle /> {story.User.name}</p>
                         <p className="story-elements date-written">{dateWritten}</p>
                         <img id="sd-img"src={story.imageUrl} alt="story"/>
-                        <p className="story-elements">{story.body}</p>
+                        <p className="story-elements" id="story-body">{story.body}</p>
                         <button id="comments-btn" type="submit" onClick={() => setShowComments(true)}>
                             Comments
                         </button>
