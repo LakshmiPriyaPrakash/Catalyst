@@ -17,10 +17,10 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink className="story-link" to={`/user/stories`}>
+        <NavLink className="user-nav" to={`/user/stories`}>
                   My stories
         </NavLink>
-        <NavLink className="story-link" to={`/story/new`}>
+        <NavLink className="user-nav" to={`/story/new`}>
                   Write a story
         </NavLink>
         <ProfileButton />
