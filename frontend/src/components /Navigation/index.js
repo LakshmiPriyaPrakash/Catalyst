@@ -42,6 +42,7 @@ function Navigation({ isLoaded }){
   return (
     <div id="nav-container">
       <div id="home-link-div">
+        <img id="c-logo" src="https://res.cloudinary.com/lpriya/image/upload/v1633930410/Catalyst/earth-favicon_hoyodj.png" />
         <NavLink id="home-link" exact to="/">Catalyst</NavLink>
       </div>
       <div id="nav-buttons">

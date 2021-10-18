@@ -13,6 +13,19 @@
     text-decoration: none;
     color: black;
     font-size: 30px;
+    font-weight: bold;
+}
+
+#home-link-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#c-logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
 }
 
 #nav-buttons {
