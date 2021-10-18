@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { deleteStory } from '../../store/stories';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaRegUserCircle } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import './UserStories.css';
 
@@ -21,26 +21,26 @@ function UserStories() {
 
         return (
             <>
-                <div id="ud-feed-container">
-                    <div id="ud-left-div">
+                <div className="ud-feed-container">
+                    <div className="ud-left-div">
 
                     </div>
-                    <div id="ud-center-div">
+                    <div className="ud-center-div">
                         <h2 className="rec-title">Your stories</h2>
                         <ul>
                             {userStories.map(story => {
                                 let d = new Date(story.createdAt);
                                 let dateWritten = d.toString().slice(4, 10)
                                 return(
-                                    <li key={story.id} id="feed-list">
+                                    <li key={story.id} className="feed-list">
                                         <div className="story-container">
                                             <div className="story-details">
-                                                <p>{story.User.name}</p>
-                                                <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                                <p className="user-name"><FaRegUserCircle /> {story.User.name}</p>
+                                                <NavLink className="story-link" to={`/stories/${story.id}`}>
                                                     <h2>{story.title}</h2>
-                                                    <p id="subtitle">{story.subtitle}</p>
+                                                    <p className="subtitle">{story.subtitle}</p>
                                                 </NavLink>
-                                                <p>{dateWritten}</p>
+                                                <p className="date-written">{dateWritten}</p>
                                                 <div id="e-d-btn-ctn">
                                                     <NavLink to={`/edit/story/${story.id}`}>
                                                         <button className="edit-del-btn" type="submit"><FaEdit size={20} /></button>
@@ -52,7 +52,7 @@ function UserStories() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <NavLink id="story-link" to={`/stories/${story.id}`}>
+                                                <NavLink className="story-link" to={`/stories/${story.id}`}>
                                                     <img id="feed-img" src={story.imageUrl} alt="story"/>
                                                 </NavLink>
                                             </div>
@@ -62,7 +62,7 @@ function UserStories() {
                             })}
                         </ul>
                     </div>
-                    <div id="ud-right-div">
+                    <div className="ud-right-div">
 
                     </div>
                 </div>

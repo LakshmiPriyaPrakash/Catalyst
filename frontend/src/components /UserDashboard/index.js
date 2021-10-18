@@ -8,15 +8,15 @@ function Userdashboard() {
 
     if (sessionUser) {
         return (
-            <div id="ud-feed-container">
-                <div id="ud-left-div">
+            <div className="ud-feed-container">
+                <div className="ud-left-div">
 
                 </div>
-                <div id="ud-center-div">
+                <div className="ud-center-div">
                     <UserFeed />
                 </div>
-                <div id="ud-right-div">
-                    
+                <div className="ud-right-div">
+
                 </div>
             </div>
           );

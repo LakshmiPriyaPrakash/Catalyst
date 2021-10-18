@@ -49,7 +49,7 @@ function EditStory() {
                     <div className="story-form-container">
                         <form className="story-form" onSubmit={handleSubmit} >
                         <h2 className="ws-title">Edit your Story</h2>
-                        <ul id="ws-errors">
+                        <ul className="ws-errors">
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
                         <div className="ws-form-field">

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { FaRegUserCircle } from 'react-icons/fa';
 import Comments from "../Comments";
 import './StoryDetails.css';
 
@@ -18,11 +19,11 @@ function StoryDetail() {
                 <div id="story-comments">
                     <div id="story-details">
                         <h2 className="story-elements">{story.title}</h2>
-                        <h5 className="story-elements">{story.subtitle}</h5>
-                        <p className="story-elements">{story.User.name}</p>
-                        <p className="story-elements">{dateWritten}</p>
+                        <h4 className="story-elements subtitle">{story.subtitle}</h4>
+                        <p className="story-elements user-name"><FaRegUserCircle /> {story.User.name}</p>
+                        <p className="story-elements date-written">{dateWritten}</p>
                         <img id="sd-img"src={story.imageUrl} alt="story"/>
-                        <p className="story-elements">{story.body}</p>
+                        <p className="story-elements" id="story-body">{story.body}</p>
                         <button id="comments-btn" type="submit" onClick={() => setShowComments(true)}>
                             Comments
                         </button>

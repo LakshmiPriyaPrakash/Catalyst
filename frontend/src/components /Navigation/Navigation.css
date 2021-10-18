@@ -12,8 +12,20 @@
 #home-link {
     text-decoration: none;
     color: black;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
+    font-weight: bold;
+}
+
+#home-link-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#c-logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
 }
 
 #nav-buttons {
@@ -26,4 +38,21 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#demo-btn:hover {
+    background-color: white
+}
+
+.user-nav{
+    text-decoration: none;
+    color: black;
+    padding: 7px;
+    border-radius: 20px;
+}
+
+.user-nav:hover {
+    background-color: white;
 }

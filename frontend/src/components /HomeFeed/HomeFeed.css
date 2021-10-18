@@ -11,12 +11,21 @@
     width: 600px;
 }
 
-#subtitle {
+.subtitle {
     color: gray;
     padding-top: 10px;
 }
 
-#feed-list {
+.user-name {
+    font-size: small;
+}
+
+.date-written {
+    font-size: small;
+    color: lightslategray
+}
+
+.feed-list {
     padding: 30px;
 }
 
@@ -25,7 +34,7 @@
     width: 250px;
 }
 
-#story-link {
+.story-link {
     text-decoration: none;
     color: black;
 }

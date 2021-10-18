@@ -16,7 +16,15 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton />
+      <>
+        <NavLink className="user-nav" to={`/user/stories`}>
+                  My stories
+        </NavLink>
+        <NavLink className="user-nav" to={`/story/new`}>
+                  Write a story
+        </NavLink>
+        <ProfileButton />
+      </>
     );
   } else {
     sessionLinks = (
@@ -34,6 +42,7 @@ function Navigation({ isLoaded }){
   return (
     <div id="nav-container">
       <div id="home-link-div">
+        <img id="c-logo" src="https://res.cloudinary.com/lpriya/image/upload/v1633930410/Catalyst/earth-favicon_hoyodj.png" alt="catalyst logo"/>
         <NavLink id="home-link" exact to="/">Catalyst</NavLink>
       </div>
       <div id="nav-buttons">

@@ -3,7 +3,14 @@
     padding: 10px;
     cursor: pointer;
     background-color: transparent;
+    border-radius: 20px;
+    padding: 10px;
 }
+
+#nav-login-btn:hover {
+    background-color: white
+}
+
 
 .cred-form {
     display: flex;

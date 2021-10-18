@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #profile-div {
@@ -25,7 +26,6 @@
 }
 
 .prof-list-item {
-    font-family: monospace;
     color: black;
     list-style-type: none;
     padding: 10px;
@@ -41,4 +41,6 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    font-weight: bold;
+    color: darkblue;
 }
