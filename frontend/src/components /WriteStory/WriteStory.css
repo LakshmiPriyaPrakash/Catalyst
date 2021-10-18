@@ -17,7 +17,7 @@
     flex-direction: column;
 }
 
-#ws-errors {
+.ws-errors {
     color: rgb(255, 73, 73);
 }
 

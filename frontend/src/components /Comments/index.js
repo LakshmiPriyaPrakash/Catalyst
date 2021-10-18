@@ -98,7 +98,7 @@ function Comments() {
                 {sessionUser &&
                     <div>
                         <form id="comments-form" onSubmit={handleSubmit}>
-                            <ul id="ws-errors">
+                            <ul className="ws-errors">
                                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                             </ul>
                             <label >
@@ -158,7 +158,7 @@ function Comments() {
                             {sessionUser && showEditBox && (showCommentId === comment.id) &&
                                 <div>
                                     <form id="comments-form" onSubmit={handleEdit}>
-                                    <ul id="ws-errors">
+                                    <ul className="ws-errors">
                                         {editErrors.map((error, idx) => <li key={idx}>{error}</li>)}
                                     </ul>
                                     <label >

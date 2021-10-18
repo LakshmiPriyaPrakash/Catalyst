@@ -1,5 +1,5 @@
 
-#ud-feed-container {
+.ud-feed-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -7,17 +7,17 @@
     width: 100%;
 }
 
-#ud-left-div {
+.ud-left-div {
     width: 20%;
     height: fit-content;
 }
 
-#ud-right-div {
+.ud-right-div {
     width: 20%;
     height: fit-content;
 }
 
-#ud-center-div {
+.ud-center-div {
     width: 60%;
     height: fit-content;
 }
