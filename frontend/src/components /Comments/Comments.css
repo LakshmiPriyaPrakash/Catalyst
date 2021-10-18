@@ -34,11 +34,12 @@
     border-color:rgb(0, 183, 255);
 }
 
-#clear {
+.clear {
     text-decoration: underline;
     cursor: pointer;
     color: rgb(51, 107, 107);
     margin-left: 10%;
+    font-size: 18px;
 }
 
 .ed-button {

@@ -113,7 +113,7 @@ function Comments() {
                                 />
                             </label>
                             <button className="wc-button" type="submit">Submit</button>
-                            <span id="clear" onClick={() => setBody("")}>
+                            <span className="clear" onClick={() => setBody("")}>
                                 Clear
                             </span>
                         </form>
@@ -178,7 +178,7 @@ function Comments() {
                                     }}>
                                         Save
                                     </button>
-                                    <span id="clear" onClick={() => {
+                                    <span className="clear" onClick={() => {
                                         setshowEditBox(false)
                                         setshowCommentId(null)
                                         let newobj = {...newObj}
