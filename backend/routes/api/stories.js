@@ -4,6 +4,7 @@ const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Story, User } = require('../../db/models');
+const { singleMulterUpload, singlePublicFileUpload} = require('../../awsS3.js')
 
 const router = express.Router();
 
@@ -37,15 +38,27 @@ router.get('/', asyncHandler(async function(req, res) {
 
 
 //inserts a story into the Stories table
-router.post('/', requireAuth, validateStory, asyncHandler(async function(req, res) {
-      const newStory = await Story.create(req.body);
-      const story = await Story.findByPk(newStory.id, {
-        include: User
-    });
-      if(story) {
-        return res.json(story);
-      }
-    })
+router.post('/',
+            requireAuth,
+            singleMulterUpload("image"),
+            validateStory,
+            asyncHandler(async function(req, res) {
+              const { authorId, title, subtitle, body } = req.body;
+              const imageUrl = await singlePublicFileUpload(req.file);
+              const newStory = await Story.create({
+                authorId,
+                title,
+                subtitle,
+                body,
+                imageUrl
+              });
+              const story = await Story.findByPk(newStory.id, {
+                include: User
+              });
+              if(story) {
+                return res.json(story);
+              }
+            })
   );
 
 
