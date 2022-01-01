@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from "react-router-dom";
+import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css';
 
@@ -37,7 +38,7 @@ function ProfileButton() {
   return (
       <div id="profile-div">
         <button id="profile-button" onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+          <FaUserCircle />
         </button>
         {showMenu && (
           <ul id="profile-dropdown">
