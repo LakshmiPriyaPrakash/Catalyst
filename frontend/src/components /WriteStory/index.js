@@ -12,9 +12,14 @@ function WriteStory() {
 
     const [title, setTitle] = useState("");
     const [subtitle, setSubtitle] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+    const [image, setImage] = useState(null);
     const [body, setBody] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +30,7 @@ function WriteStory() {
             authorId,
             title,
             subtitle,
-            imageUrl,
+            image,
             body
         };
 
@@ -73,15 +78,11 @@ function WriteStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label htmlFor="image">Image URL</label>
+                            <label> Add Image </label>
                                 <input
-                                className="sf-input"
-                                id="image"
-                                type="text"
-                                value={imageUrl}
-                                placeholder="Add an image..."
-                                onChange={(e) => setImageUrl(e.target.value)}
-                                required
+                                    className="sf-input"
+                                    type="file"
+                                    onChange={updateFile}
                                 />
                         </div>
                         <div className="ws-form-field">

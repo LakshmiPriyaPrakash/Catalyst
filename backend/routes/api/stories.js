@@ -21,10 +21,6 @@ const validateStory = [
     .exists({ checkFalsy: true })
     .isLength({ min: 1 })
     .withMessage('Please provide content for story.'),
-  check('imageUrl')
-    .notEmpty()
-    .isURL({ require_protocol: false, require_host: false })
-    .withMessage('Please provide valid image URL.'),
   handleValidationErrors,
 ];
 
