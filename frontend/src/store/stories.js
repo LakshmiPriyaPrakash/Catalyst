@@ -60,7 +60,7 @@ export const createStory = (newStory) => async (dispatch) => {
 };
 
 export const updateStory = (updateStory) => async (dispatch) => {
-  const {id, authorId, title, subtitle, image, body } = updateStory;
+  const {id, authorId, title, subtitle, oldImage, newImage, body } = updateStory;
   const formData = new FormData();
   formData.append("id", id);
   formData.append("authorId", authorId);
@@ -68,7 +68,8 @@ export const updateStory = (updateStory) => async (dispatch) => {
   formData.append("subtitle", subtitle);
   formData.append("body", body);
 
-  if (image) formData.append("image", image);
+  if (oldImage) formData.append("imageUrl",oldImage)
+  if (newImage) formData.append("imageUrl", newImage);
 
   const response = await csrfFetch(`/api/stories/${id}`, {
     method: "PUT",

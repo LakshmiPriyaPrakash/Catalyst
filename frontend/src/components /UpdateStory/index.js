@@ -15,7 +15,9 @@ function EditStory() {
 
     const [title, setTitle] = useState(story.title);
     const [subtitle, setSubtitle] = useState(story.subtitle);
-    const [image, setImage] = useState(story.imageUrl);
+    const [oldImage, setOldImage] = useState(story.imageUrl);
+    const [showImg, setShowImg] = useState(true);
+    const [newImage, setNewImage] = useState(null);
     const [body, setBody] = useState(story.body);
     const [errors, setErrors] = useState([]);
 
@@ -23,8 +25,9 @@ function EditStory() {
 
         const updateFile = (e) => {
             const file = e.target.files[0];
-            if (file) setImage(file);
+            if (file) setNewImage(file);
         };
+
 
         const handleSubmit = async (e) => {
             e.preventDefault();
@@ -36,10 +39,11 @@ function EditStory() {
                 authorId,
                 title,
                 subtitle,
-                image,
+                oldImage,
+                newImage,
                 body
             };
-
+            
             return dispatch(updateStory(editedStory))
                 .then((updatedStory)=> history.push(`/stories/${updatedStory.id}`))
                 .catch(async (res) => {
@@ -81,6 +85,23 @@ function EditStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
+                        {showImg &&
+                            <>
+                                <label> Existing image </label>
+                                    <div className="old-img-cnt">
+                                        <span
+                                            className="close"
+                                            onClick={() =>{
+                                                setShowImg(false)
+                                                setOldImage(null)
+                                            }}
+                                        >
+                                                X
+                                        </span>
+                                        <img className="old-img" src={oldImage} alt="existing" />
+                                    </div>
+                                </>
+                            }
                             <label> Add new image </label>
                                     <input
                                         className="sf-input"
