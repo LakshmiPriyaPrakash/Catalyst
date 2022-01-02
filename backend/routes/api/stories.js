@@ -4,6 +4,7 @@ const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Story, User } = require('../../db/models');
+const { singleMulterUpload, singlePublicFileUpload} = require('../../awsS3.js')
 
 const router = express.Router();
 
@@ -20,10 +21,6 @@ const validateStory = [
     .exists({ checkFalsy: true })
     .isLength({ min: 1 })
     .withMessage('Please provide content for story.'),
-  check('imageUrl')
-    .notEmpty()
-    .isURL({ require_protocol: false, require_host: false })
-    .withMessage('Please provide valid image URL.'),
   handleValidationErrors,
 ];
 
@@ -37,29 +34,59 @@ router.get('/', asyncHandler(async function(req, res) {
 
 
 //inserts a story into the Stories table
-router.post('/', requireAuth, validateStory, asyncHandler(async function(req, res) {
-      const newStory = await Story.create(req.body);
-      const story = await Story.findByPk(newStory.id, {
-        include: User
-    });
-      if(story) {
-        return res.json(story);
-      }
-    })
+router.post('/',
+            requireAuth,
+            singleMulterUpload("image"),
+            validateStory,
+            asyncHandler(async function(req, res) {
+              const { authorId, title, subtitle, body } = req.body;
+              const imageUrl = await singlePublicFileUpload(req.file);
+              const newStory = await Story.create({
+                authorId,
+                title,
+                subtitle,
+                body,
+                imageUrl
+              });
+              const story = await Story.findByPk(newStory.id, {
+                include: User
+              });
+              if(story) {
+                return res.json(story);
+              }
+            })
   );
 
 
 //edits a story
-router.put('/:id', requireAuth, validateStory, asyncHandler(async function(req, res) {
-  await Story.update(req.body, { where: { id: req.body.id } });
-  const updatedStory = await Story.findByPk(req.body.id, {
-    include: User
-  });
+router.put('/:id',
+            requireAuth,
+            singleMulterUpload("imageUrl"),
+            validateStory,
+            asyncHandler(async function(req, res) {
+              let { id, authorId, title, subtitle, body, imageUrl } = req.body;
 
-  if(updatedStory) {
-    return res.json(updatedStory);
-  }
-})
+              if(req.file) {
+                imageUrl = await singlePublicFileUpload(req.file);
+              }
+
+              const editedStory = {
+                authorId,
+                title,
+                subtitle,
+                body,
+                imageUrl
+              };
+
+              await Story.update(editedStory, { where: { id: id } });
+              const updatedStory = await Story.findByPk(id, {
+                include: User
+              });
+
+              if(updatedStory) {
+                return res.json(updatedStory);
+              }
+            })
 );
 
 //deletes a story

@@ -15,11 +15,19 @@ function EditStory() {
 
     const [title, setTitle] = useState(story.title);
     const [subtitle, setSubtitle] = useState(story.subtitle);
-    const [imageUrl, setImageUrl] = useState(story.imageUrl);
+    const [oldImage, setOldImage] = useState(story.imageUrl);
+    const [showImg, setShowImg] = useState(true);
+    const [newImage, setNewImage] = useState(null);
     const [body, setBody] = useState(story.body);
     const [errors, setErrors] = useState([]);
 
     if(sessionUser && story) {
+
+        const updateFile = (e) => {
+            const file = e.target.files[0];
+            if (file) setNewImage(file);
+        };
+
 
         const handleSubmit = async (e) => {
             e.preventDefault();
@@ -31,10 +39,11 @@ function EditStory() {
                 authorId,
                 title,
                 subtitle,
-                imageUrl,
+                oldImage,
+                newImage,
                 body
             };
-
+            
             return dispatch(updateStory(editedStory))
                 .then((updatedStory)=> history.push(`/stories/${updatedStory.id}`))
                 .catch(async (res) => {
@@ -76,15 +85,29 @@ function EditStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label htmlFor="image">Image URL</label>
-                                <input
-                                className="sf-input"
-                                id="image"
-                                type="text"
-                                value={imageUrl}
-                                onChange={(e) => setImageUrl(e.target.value)}
-                                required
-                                />
+                        {showImg &&
+                            <>
+                                <label> Existing image </label>
+                                    <div className="old-img-cnt">
+                                        <span
+                                            className="close"
+                                            onClick={() =>{
+                                                setShowImg(false)
+                                                setOldImage(null)
+                                            }}
+                                        >
+                                                X
+                                        </span>
+                                        <img className="old-img" src={oldImage} alt="existing" />
+                                    </div>
+                                </>
+                            }
+                            <label> Add new image </label>
+                                    <input
+                                        className="sf-input"
+                                        type="file"
+                                        onChange={updateFile}
+                                    />
                         </div>
                         <div className="ws-form-field">
                             <label htmlFor="content">Content</label>
