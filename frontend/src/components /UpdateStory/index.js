@@ -15,11 +15,16 @@ function EditStory() {
 
     const [title, setTitle] = useState(story.title);
     const [subtitle, setSubtitle] = useState(story.subtitle);
-    const [imageUrl, setImageUrl] = useState(story.imageUrl);
+    const [image, setImage] = useState(story.imageUrl);
     const [body, setBody] = useState(story.body);
     const [errors, setErrors] = useState([]);
 
     if(sessionUser && story) {
+
+        const updateFile = (e) => {
+            const file = e.target.files[0];
+            if (file) setImage(file);
+        };
 
         const handleSubmit = async (e) => {
             e.preventDefault();
@@ -31,7 +36,7 @@ function EditStory() {
                 authorId,
                 title,
                 subtitle,
-                imageUrl,
+                image,
                 body
             };
 
@@ -76,15 +81,12 @@ function EditStory() {
                                 />
                         </div>
                         <div className="ws-form-field">
-                            <label htmlFor="image">Image URL</label>
-                                <input
-                                className="sf-input"
-                                id="image"
-                                type="text"
-                                value={imageUrl}
-                                onChange={(e) => setImageUrl(e.target.value)}
-                                required
-                                />
+                            <label> Add new image </label>
+                                    <input
+                                        className="sf-input"
+                                        type="file"
+                                        onChange={updateFile}
+                                    />
                         </div>
                         <div className="ws-form-field">
                             <label htmlFor="content">Content</label>
