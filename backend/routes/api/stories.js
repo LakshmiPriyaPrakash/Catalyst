@@ -59,16 +59,30 @@ router.post('/',
 
 
 //edits a story
-router.put('/:id', requireAuth, validateStory, asyncHandler(async function(req, res) {
-  await Story.update(req.body, { where: { id: req.body.id } });
-  const updatedStory = await Story.findByPk(req.body.id, {
-    include: User
-  });
+router.put('/:id',
+            requireAuth,
+            singleMulterUpload("image"),
+            validateStory,
+            asyncHandler(async function(req, res) {
+              const { id, authorId, title, subtitle, body } = req.body;
+              const imageUrl = await singlePublicFileUpload(req.file);
+              const editedStory = {
+                authorId,
+                title,
+                subtitle,
+                body,
+                imageUrl
+              };
 
-  if(updatedStory) {
-    return res.json(updatedStory);
-  }
-})
+              await Story.update(editedStory, { where: { id: id } });
+              const updatedStory = await Story.findByPk(id, {
+                include: User
+              });
+
+              if(updatedStory) {
+                return res.json(updatedStory);
+              }
+            })
 );
 
 //deletes a story
